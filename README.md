@@ -4,15 +4,15 @@ iOS Engineer Task
 Here at Plum, we work in "[squads](https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/)" – a more startup-appropriate name for saying small, cross-functional teams that are focussed on a mission and KPI.
 
 The fundamental basis of any squad, is a team of kick-ass superheroes. Hence this task,
-**The Superhero Squad Maker.** You mission is to build the ultimate superhero squad using
+**The Superhero Squad Maker.** Your mission is to build the ultimate superhero squad using
 the [Marvel API](https://developer.marvel.com) for data.
 
-The app is simple. When opened, it shows your current squad (if any) and a list of all
+The app is simple. When opened, it shows your current squad at the top (if any) and a list of all
 characters from the Marvel API. Tapping on a character shows details and gives you the
 option to recruit or fire the character. We've included a design spec describing the user
 experience and interactions.
 
-You're expected to use some sort of in-app data ersistence mechamisn so the squad persists
+You're expected to use some sort of in-app data persistence mechamisn so the squad persists
 between app restarts.
 
 To use the Marvel API you need to sign up for a developer account. Once you sign up you
