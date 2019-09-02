@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UITableViewController {
+final class HomeViewController: UITableViewController {
     
     //MARK: - Dependencies
     
@@ -42,10 +42,6 @@ class HomeViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
-        viewModel.dataSource.loadMoreCharacters = { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.loadCharacters()
         }
     }
     

@@ -13,7 +13,7 @@ protocol HomeViewModelType {
     var dataSource: HomeViewDataSource { get }
 }
 
-class HomeViewModel: HomeViewModelType {
+final class HomeViewModel: HomeViewModelType {
     
     // MARK: - Private properties
     
@@ -32,6 +32,8 @@ class HomeViewModel: HomeViewModelType {
     init(apiService: APIServiceType, dataSource: HomeViewDataSource) {
         self.apiService = apiService
         self.dataSource = dataSource
+        
+        setupCallbacks()
     }
     
     // MARK: - Public methods
@@ -49,11 +51,18 @@ class HomeViewModel: HomeViewModelType {
                 let characters = response.data.results
                 self.dataSource.characters.append(contentsOf: characters)
                 self.dataSource.didLoadData?()
-                self.isLoading = false 
+                self.isLoading = false
                 self.offset += self.limit
             }
         }
     }
     
+    // MARK: - Private methods
     
+    private func setupCallbacks() {
+        dataSource.loadMoreCharacters = { [weak self] in
+            guard let self = self else { return }
+            self.loadCharacters()
+        }
+    }
 }

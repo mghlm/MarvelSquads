@@ -18,7 +18,7 @@ protocol APIServiceType {
     func request<T: Decodable>(type: T.Type, endpoint: Endpoint, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 
-class APIService: APIServiceType {
+final class APIService: APIServiceType {
     
     // MARK: - Private properties
     
