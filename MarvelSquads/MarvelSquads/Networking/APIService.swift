@@ -63,6 +63,7 @@ class APIService: APIServiceType {
         var components = URLComponents()
         components.scheme = endpoint.scheme
         components.host = endpoint.host
+        components.port = endpoint.port
         components.path = endpoint.path
         components.queryItems = endpoint.parameters
         guard let url = components.url else { return nil }
