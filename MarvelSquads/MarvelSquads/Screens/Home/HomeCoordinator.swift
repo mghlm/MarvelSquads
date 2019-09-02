@@ -31,7 +31,8 @@ final class HomeCoordinator: HomeCoordinatorType {
     // MARK: - Public methods
     
     func start() {
-        let homeViewController = HomeViewController()
+        let homeViewModel = HomeViewModel(apiService: APIService(), dataSource: HomeViewDataSource())
+        let homeViewController = HomeViewController(viewModel: homeViewModel)
         navigationController.pushViewController(homeViewController, animated: false)
     }
 }

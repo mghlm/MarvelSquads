@@ -10,7 +10,7 @@ import Foundation
 
 enum Endpoint {
     
-    case getMarvelCharacters, getCharacterComics(characterId: String)
+    case getMarvelCharacters(limit: Int, offset: Int), getCharacterComics(characterId: String)
     
     var scheme: String {
         switch self {
@@ -53,15 +53,19 @@ enum Endpoint {
         let apiKey = "b7de28137b3c1b7288e03df1efe72a6d"
         let privateKey = "0bf21185bb9494578b9927a6b38fd35a9c06e777"
         let ts = Date().timeIntervalSince1970.description
-//        let ts = "abcde123456"
         let hash = "\(ts)\(privateKey)\(apiKey)".md5
+        var commonQueryItems = [URLQueryItem(name: "apikey", value: apiKey),
+                          URLQueryItem(name: "ts", value: ts),
+                          URLQueryItem(name: "hash", value: hash)
+        ]
         
         switch self {
-        case .getMarvelCharacters, .getCharacterComics:
-            return [URLQueryItem(name: "apikey", value: apiKey),
-                    URLQueryItem(name: "ts", value: ts),
-                    URLQueryItem(name: "hash", value: hash)
-            ]
+        case .getMarvelCharacters(let limit, let offset):
+            commonQueryItems.append(URLQueryItem(name: "limit", value: "\(limit)"))
+            commonQueryItems.append(URLQueryItem(name: "offset", value: "\(offset)"))
+            return commonQueryItems
+        case .getCharacterComics:
+            return commonQueryItems
         }
     }
 }

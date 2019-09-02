@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC1157EA231D44E700726349 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1157E9231D44E700726349 /* HomeViewModel.swift */; };
+		CC1157EC231D45EB00726349 /* HomeViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1157EB231D45EB00726349 /* HomeViewDataSource.swift */; };
 		CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95C231D02D70051A923 /* AppDelegate.swift */; };
 		CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95E231D02D70051A923 /* HomeViewController.swift */; };
 		CCF1F962231D02D70051A923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F960231D02D70051A923 /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC1157E9231D44E700726349 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CC1157EB231D45EB00726349 /* HomeViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDataSource.swift; sourceTree = "<group>"; };
 		CCF1F959231D02D70051A923 /* MarvelSquads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelSquads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF1F95C231D02D70051A923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF1F95E231D02D70051A923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				CCF1F95E231D02D70051A923 /* HomeViewController.swift */,
+				CC1157E9231D44E700726349 /* HomeViewModel.swift */,
+				CC1157EB231D45EB00726349 /* HomeViewDataSource.swift */,
 				CCF1F995231D04250051A923 /* HomeCoordinator.swift */,
 			);
 			path = Home;
@@ -356,12 +362,14 @@
 				CCF1F9A5231D131A0051A923 /* Character.swift in Sources */,
 				CCF1F9A9231D21320051A923 /* String+Extensions.swift in Sources */,
 				CCF1F9A7231D1A2A0051A923 /* Comic.swift in Sources */,
+				CC1157EC231D45EB00726349 /* HomeViewDataSource.swift in Sources */,
 				CCF1F9A2231D103C0051A923 /* URLSession+Extensions.swift in Sources */,
 				CCF1F98F231D03A70051A923 /* Coordinator.swift in Sources */,
 				CCF1F99F231D0C980051A923 /* Transformer.swift in Sources */,
 				CCF1F99B231D05920051A923 /* APIService.swift in Sources */,
 				CCF1F99D231D059A0051A923 /* Endpoint.swift in Sources */,
 				CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */,
+				CC1157EA231D44E700726349 /* HomeViewModel.swift in Sources */,
 				CCF1F991231D03B50051A923 /* AppCoordinator.swift in Sources */,
 				CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */,
 				CCF1F965231D02D70051A923 /* MarvelSquads.xcdatamodeld in Sources */,

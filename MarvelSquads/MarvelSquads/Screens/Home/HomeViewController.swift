@@ -8,26 +8,53 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITableViewController {
+    
+    //MARK: - Dependencies
+    
+    private var viewModel: HomeViewModelType!
+    
+    // MARK: - Init
+    
+    init(viewModel: HomeViewModelType) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - UIViewController
 
     override func viewDidLoad() {
-        view.backgroundColor = .red
-        
-        let apiService = APIService()
-        
-        apiService.request(type: CharactersResponse.self, endpoint: .getMarvelCharacters) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let response):
-                
-                
-                
-                print(response.data.results[1].description)
+        setupCallbacks()
+        setupTableView()
+        viewModel.loadCharacters()
+        super.viewDidLoad()
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupCallbacks() {
+        viewModel.dataSource.didLoadData = { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
-        
-        super.viewDidLoad()
+        viewModel.dataSource.loadMoreCharacters = { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.loadCharacters()
+        }
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupTableView() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.delegate = viewModel.dataSource
+        tableView.dataSource = viewModel.dataSource
     }
 }
 
