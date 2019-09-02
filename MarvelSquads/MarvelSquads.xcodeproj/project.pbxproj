@@ -18,6 +18,10 @@
 		CCF1F98F231D03A70051A923 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F98E231D03A70051A923 /* Coordinator.swift */; };
 		CCF1F991231D03B50051A923 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F990231D03B50051A923 /* AppCoordinator.swift */; };
 		CCF1F996231D04250051A923 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F995231D04250051A923 /* HomeCoordinator.swift */; };
+		CCF1F99B231D05920051A923 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F99A231D05920051A923 /* APIService.swift */; };
+		CCF1F99D231D059A0051A923 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F99C231D059A0051A923 /* Endpoint.swift */; };
+		CCF1F99F231D0C980051A923 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F99E231D0C980051A923 /* Transformer.swift */; };
+		CCF1F9A2231D103C0051A923 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F9A1231D103C0051A923 /* URLSession+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		CCF1F98E231D03A70051A923 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CCF1F990231D03B50051A923 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CCF1F995231D04250051A923 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		CCF1F99A231D05920051A923 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CCF1F99C231D059A0051A923 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		CCF1F99E231D0C980051A923 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		CCF1F9A1231D103C0051A923 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +114,12 @@
 		CCF1F95B231D02D70051A923 /* MarvelSquads */ = {
 			isa = PBXGroup;
 			children = (
+				CCF1F9A3231D12100051A923 /* Models */,
+				CCF1F9A0231D101F0051A923 /* Extensions */,
+				CCF1F997231D05510051A923 /* Networking */,
 				CCF1F993231D04110051A923 /* Screens */,
 				CCF1F98D231D03850051A923 /* Coordinator */,
-				CCF1F963231D02D70051A923 /* MarvelSquads.xcdatamodeld */,
+				CCF1F998231D05620051A923 /* Storage */,
 			);
 			path = MarvelSquads;
 			sourceTree = "<group>";
@@ -167,6 +178,39 @@
 				CCF1F995231D04250051A923 /* HomeCoordinator.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		CCF1F997231D05510051A923 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CCF1F99A231D05920051A923 /* APIService.swift */,
+				CCF1F99C231D059A0051A923 /* Endpoint.swift */,
+				CCF1F99E231D0C980051A923 /* Transformer.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CCF1F998231D05620051A923 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CCF1F963231D02D70051A923 /* MarvelSquads.xcdatamodeld */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		CCF1F9A0231D101F0051A923 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CCF1F9A1231D103C0051A923 /* URLSession+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CCF1F9A3231D12100051A923 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,7 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF1F9A2231D103C0051A923 /* URLSession+Extensions.swift in Sources */,
 				CCF1F98F231D03A70051A923 /* Coordinator.swift in Sources */,
+				CCF1F99F231D0C980051A923 /* Transformer.swift in Sources */,
+				CCF1F99B231D05920051A923 /* APIService.swift in Sources */,
+				CCF1F99D231D059A0051A923 /* Endpoint.swift in Sources */,
 				CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */,
 				CCF1F991231D03B50051A923 /* AppCoordinator.swift in Sources */,
 				CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */,
