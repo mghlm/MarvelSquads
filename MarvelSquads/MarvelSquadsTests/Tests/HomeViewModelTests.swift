@@ -39,9 +39,4 @@ class HomeViewModelTests: XCTestCase {
         
         XCTAssertEqual(dataSource.characters.count, 2)
     }
-    
 }
-
-
-
-

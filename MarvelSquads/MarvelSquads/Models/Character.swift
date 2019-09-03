@@ -24,14 +24,16 @@ struct Character: Decodable {
     let description: String
     let thumbnail: Thumbnail
     
+    let isInSquad: Bool = false 
 }
 
 struct Thumbnail: Decodable {
-    let path: String
-    let `extension`: String
+    let path: String?
+    let `extension`: String?
     
-    func fullPath() -> String {
-        return path + `extension`
+    func imageUrl() -> URL? {
+        guard let path = path, let ext = `extension` else { return nil }
+        return URL(string: path + ext)
     }
 }
 
