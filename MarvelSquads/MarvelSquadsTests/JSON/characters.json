@@ -1,0 +1,25 @@
+{
+    "data": {
+        "results": [
+            {
+                "id": 1011334,
+                "name": "3-D Man",
+                "description": "He's not 2D",
+                "thumbnail": {
+                    "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
+                    "extension": "jpg"
+                },
+                "comics": {
+                    "available": 1,
+                    "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
+                    "items": [
+                        {
+                            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10225",
+                            "name": "Marvel Premiere (1972) #37"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

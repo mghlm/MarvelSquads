@@ -11,7 +11,6 @@ import XCTest
 
 final class APIServiceMock: APIServiceType {
     
-    
     var isSuccessForCharacters: Bool = true
     var isSuccessForComics: Bool = true
     
