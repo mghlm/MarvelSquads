@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeCoordinatorType: Coordinator {
-    
+    func navigateToCharacterDetails(with character: Character)
 }
 
 final class HomeCoordinator: HomeCoordinatorType {
@@ -31,8 +31,14 @@ final class HomeCoordinator: HomeCoordinatorType {
     // MARK: - Public methods
     
     func start() {
-        let homeViewModel = HomeViewModel(apiService: APIService(), dataSource: HomeViewDataSource())
+        let homeViewModel = HomeViewModel(apiService: APIService(), dataSource: HomeViewDataSource(), coordinator: self)
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         navigationController.pushViewController(homeViewController, animated: false)
+    }
+    
+    func navigateToCharacterDetails(with character: Character) {
+        let characterDetailsViewModel = CharacterDetailsViewModel(character: character, apiService: APIService())
+        let characterDetailsViewController = CharacterDetailsViewController(viewModel: characterDetailsViewModel)
+        navigationController.pushViewController(characterDetailsViewController, animated: true)
     }
 }

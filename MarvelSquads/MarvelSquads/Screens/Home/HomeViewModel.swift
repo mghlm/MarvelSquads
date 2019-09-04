@@ -26,12 +26,14 @@ final class HomeViewModel: HomeViewModelType {
     
     var apiService: APIServiceType
     var dataSource: HomeViewDataSource
+    var coordinator: HomeCoordinatorType
     
     // MARK: - Init
     
-    init(apiService: APIServiceType, dataSource: HomeViewDataSource) {
+    init(apiService: APIServiceType, dataSource: HomeViewDataSource, coordinator: HomeCoordinatorType) {
         self.apiService = apiService
         self.dataSource = dataSource
+        self.coordinator = coordinator
         
         setupCallbacks()
     }
@@ -63,6 +65,10 @@ final class HomeViewModel: HomeViewModelType {
         dataSource.loadMoreCharacters = { [weak self] in
             guard let self = self else { return }
             self.loadCharacters()
+        }
+        dataSource.didTapCell = { [weak self] character in
+            guard let self = self else { return }
+            self.coordinator.navigateToCharacterDetails(with: character)
         }
     }
 }

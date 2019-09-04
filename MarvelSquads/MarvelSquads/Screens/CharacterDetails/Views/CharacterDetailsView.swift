@@ -10,9 +10,16 @@ import UIKit
 
 final class CharacterDetailsView: UIView {
     
+    var didLoadCharacterImage: (() -> Void)?
+    
     // MARK: - Private properties
     
     private var character: Character
+    var comics: [Comic]? {
+        didSet {
+            comicsView.comics = comics 
+        }
+    }
     
     lazy private var characterImageView: ImageLoader = {
         let iv = ImageLoader()
@@ -50,7 +57,10 @@ final class CharacterDetailsView: UIView {
         return lbl
     }()
     
-    private var comicsView: ComicsView!
+    lazy private var comicsView: ComicsView = {
+        let cv = ComicsView(frame: .zero)
+        return cv
+    }()
     
     // MARK: - Init
     
@@ -68,14 +78,19 @@ final class CharacterDetailsView: UIView {
     // MARK: - Private methods
     
     private func setupUI() {
-        [characterImageView, titleLabel, addToSquadButton, descriptionLabel].forEach { addSubview($0) }
+        backgroundColor = .white
+        [characterImageView, titleLabel, addToSquadButton, descriptionLabel, comicsView].forEach { addSubview($0) }
+        
         setupImage()
+        setupLabels()
+        setupConstraints()
+    }
+    
+    private func setupLabels() {
         titleLabel.text = character.name
         let buttonTitle = character.isInSquad ? "🔥 Fire from Squad" : "💪 Recruit to Squad"
         addToSquadButton.setTitle(buttonTitle, for: .normal)
         descriptionLabel.text = character.description
-//        comicsView = ComicsView(frame: .zero, comics: character)
-        setupConstraints()
     }
     
     private func setupImage() {
@@ -86,16 +101,23 @@ final class CharacterDetailsView: UIView {
 //        }
         
         if let imageUrl = character.thumbnail.imageUrl() {
-            characterImageView.loadImage(with: imageUrl)
+            characterImageView.loadImage(with: imageUrl) {
+                let imagePixelWidth = self.characterImageView.image?.size.width ?? 0
+                let imagePixelHeight = self.characterImageView.image?.size.height ?? 0
+                let imageHeight = (UIScreen.main.bounds.width / imagePixelWidth) * imagePixelHeight
+
+                self.characterImageView.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
+                self.didLoadCharacterImage?()
+            }
         }
     }
     
     private func setupConstraints() {
-        characterImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        characterImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: UIScreen.main.bounds.width)
         titleLabel.anchor(top: characterImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
         addToSquadButton.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 43)
         descriptionLabel.anchor(top: addToSquadButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
-//        comicsView.anchor(top: descriptionLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        comicsView.anchor(top: descriptionLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
 }

@@ -23,8 +23,13 @@ struct Character: Decodable {
     let name: String
     let description: String
     let thumbnail: Thumbnail
+    var comics: [Comic]? 
     
-    let isInSquad: Bool = false 
+    let isInSquad: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, description, thumbnail
+    }
 }
 
 struct Thumbnail: Decodable {
@@ -33,7 +38,7 @@ struct Thumbnail: Decodable {
     
     func imageUrl() -> URL? {
         guard let path = path, let ext = `extension` else { return nil }
-        return URL(string: path + ext)
+        return URL(string: "\(path).\(ext)")
     }
 }
 

@@ -11,6 +11,7 @@ import UIKit
 final class HomeViewDataSource: NSObject {
     
     var didLoadData: (() -> Void)?
+    var didTapCell: ((Character) -> Void)?
     var loadMoreCharacters: (() -> Void)?
     
     // MARK: - Public propreties
@@ -28,7 +29,7 @@ extension HomeViewDataSource: UITableViewDelegate, UITableViewDataSource {
         let lastElement = characters.count - 1
         
         if indexPath.row == lastElement {
-            let spinner = UIActivityIndicatorView(style: .gray)
+            let spinner = UIActivityIndicatorView(style: .white)
             spinner.startAnimating()
             spinner.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
             tableView.tableFooterView = spinner
@@ -46,8 +47,15 @@ extension HomeViewDataSource: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let character = characters[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = character.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.id, for: indexPath) as! CharacterTableViewCell
+        cell.character = character
+        cell.selectionStyle = .none 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let character = characters[indexPath.row]
+        didTapCell?(character)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

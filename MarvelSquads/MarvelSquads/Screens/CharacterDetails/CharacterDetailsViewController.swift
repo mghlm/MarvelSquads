@@ -33,17 +33,26 @@ final class CharacterDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCharacterDetailsView()
+        setupCallBacks()
     }
     
     // MARK: - Private methods
     
-    private func setupUI() {
-        characterDetailsView = CharacterDetailsView(frame: .zero, character: viewModel.character)
-        
-        setupConstraints()
+    private func setupCallBacks() {
+        viewModel.didLoadComics = { [weak self] comics in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.characterDetailsView.comics = comics 
+            }
+        }
     }
     
-    private func setupConstraints() {
+    private func setupCharacterDetailsView() {
+        characterDetailsView = CharacterDetailsView(frame: .zero, character: viewModel.character)
+        view.addSubview(characterDetailsView)
         characterDetailsView.fillSuperview()
     }
+    
+    
 }

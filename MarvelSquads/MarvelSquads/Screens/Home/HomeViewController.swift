@@ -28,6 +28,8 @@ final class HomeViewController: UITableViewController {
     // MARK: - UIViewController
 
     override func viewDidLoad() {
+        tableView.backgroundColor = Color.background.value
+        navigationController?.navigationBar.transparentNavigationBar()
         setupCallbacks()
         setupTableView()
         viewModel.loadCharacters()
@@ -48,7 +50,8 @@ final class HomeViewController: UITableViewController {
     // MARK: - Private methods
     
     private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.separatorStyle = .none 
+        tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.id)
         tableView.delegate = viewModel.dataSource
         tableView.dataSource = viewModel.dataSource
     }
