@@ -2,7 +2,7 @@
 //  Transformer.swift
 //  MarvelSquads
 //
-//  Created by Magnus Holm on 02/09/2019.
+//  Created by Magnus Holm on 04/09/2019.
 //  Copyright © 2019 Magnus Holm. All rights reserved.
 //
 
@@ -38,3 +38,4 @@ struct JSONTransformer: Transformer {
         return try decoder.decode(type, from: data)
     }
 }
+

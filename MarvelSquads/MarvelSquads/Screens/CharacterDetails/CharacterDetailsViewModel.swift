@@ -17,12 +17,10 @@ final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
     
     private var character: Character! {
         didSet {
+            setupCallbacks()
             let section = CharacterDetailsSection(character: character)
             dataSource.sections.append(section)
-
-            if character.comics == nil {
-                getComics()
-            }
+            getComics()
         }
     }
     
@@ -37,30 +35,43 @@ final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
         self.apiService = apiService
         self.dataSource = dataSource
         self.set(character)
-        
-//        let section = CharacterDetailsSection(character: character)
-//        dataSource.sections.append(section)
-//        dataSource.didUpdateData?()
+    }
+    
+    // MARK: - Public methods
+    
+    func getComics() {
+        if let comics = character.comics {
+            let section = ComicDetailsSection(comics: comics)
+            dataSource.sections.append(section)
+        } else {
+            let id = String(character.id)
+            apiService.request(type: CharacterComicsResponse.self, endpoint: .getCharacterComics(characterId: id)) { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let comicsResponse):
+                    let comics = comicsResponse.data.results
+                    if !comics.isEmpty {
+                        let section = ComicDetailsSection(comics: comics)
+                        self.dataSource.sections.append(section)
+                    }
+                }
+            }
+        }
+    }
+    
+    func setupCallbacks() {
+        dataSource.didTapAddToSquadButton = { [weak self] in
+            guard let self = self else { return }
+            print(self.character.isInSquad)
+            // change "isInSquad" status of current Character
+            // save or remove caracter from storage
+        }
     }
     
     // MARK: - Private methods
     
     private func set(_ character: Character) {
         self.character = character
-    }
-    
-    func getComics() {
-        let id = String(character.id)
-        apiService.request(type: CharacterComicsResponse.self, endpoint: .getCharacterComics(characterId: id)) { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let comicsResponse):
-                let comics = comicsResponse.data.results
-                let section = ComicDetailsSection(comics: comics)
-                self.dataSource.sections.append(section)
-//                self.dataSource.didUpdateData?()
-            }
-        }
     }
 }

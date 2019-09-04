@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol CharacterDetailsTableViewCellDelegate: class {
+    func didTapSquadButton()
+}
+
 final class CharacterDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
     static var id = "CharacterDetailsTableViewCellIdentifier"
+    
+    weak var delegate: CharacterDetailsTableViewCellDelegate?
     
     var character: Character! {
         didSet {
@@ -43,6 +49,7 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
         let btn = UIButton()
         btn.backgroundColor = .red
         btn.layer.cornerRadius = 8
+        btn.addTarget(self, action: #selector(handleDidTapSquadButton), for: .touchUpInside)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
         btn.clipsToBounds = true
@@ -93,5 +100,9 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
         titleLabel.anchor(top: characterImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 24, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
         addToSquadButton.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 43)
         descriptionLabel.anchor(top: addToSquadButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
+    }
+    
+    @objc private func handleDidTapSquadButton() {
+        delegate?.didTapSquadButton()
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 final class CharacterDetailsDataSource: NSObject {
     
     var didUpdateData: (() -> Void)?
+    var didTapAddToSquadButton: (() -> Void)?
     var sections = [Section]() {
         didSet {
             didUpdateData?()
@@ -36,6 +37,7 @@ extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource
             let character = (section as! CharacterDetailsSection).character
             let cell = tableView.dequeueReusableCell(withIdentifier: CharacterDetailsTableViewCell.id, for: indexPath) as! CharacterDetailsTableViewCell
             cell.character = character
+            cell.delegate = self
             return cell
         case .comicDetails:
             let comics = (section as! ComicDetailsSection).comics
@@ -43,5 +45,11 @@ extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource
             cell.comics = comics
             return cell
         }
+    }
+}
+
+extension CharacterDetailsDataSource: CharacterDetailsTableViewCellDelegate {
+    func didTapSquadButton() {
+        self.didTapAddToSquadButton?()
     }
 }

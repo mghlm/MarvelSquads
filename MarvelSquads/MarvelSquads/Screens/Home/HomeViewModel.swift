@@ -44,6 +44,18 @@ final class HomeViewModel: HomeViewModelType {
         guard !reachedEndOfCharacters, !isLoading else { return }
         
         isLoading = true
+        
+//        apiService.request(endpoint: .getMarvelCharacters(limit: limit, offset: offset)) { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let characterResponse):
+//                guard let characterData = characterResponse["data"] as? JSON,
+//                      let jsonArray = characterData["results"] as? [JSON] else { return }
+//                var characters = self.createCharacterObjects(with: jsonArray)
+//            }
+//        }
+        
         apiService.request(type: CharactersResponse.self, endpoint: .getMarvelCharacters(limit: limit, offset: offset)) { result in
             switch result {
             case .failure(let error):
@@ -58,6 +70,28 @@ final class HomeViewModel: HomeViewModelType {
             }
         }
     }
+    
+//        private func createCharacterObjects(with json: [JSON]) -> [Character] {
+//            var characters = [Character]()
+//            json.forEach {
+//                let character = Character()
+//                guard
+//                    let id = $0["id"] as? Int32,
+//                    let name = $0["name"] as? String,
+//                    let characterDescription = $0["description"] as? String,
+//                    let thumbnail = $0["thumbnail"] as? JSON,
+//                    let path = thumbnail["path"] as? String,
+//                    let pathExtension = thumbnail["extension"] as? String else { return }
+//                
+//                character.id = id
+//                character.name = name
+//                character.characterDescription = characterDescription
+//                character.imageUrl = "\(path).\(pathExtension)"
+//                
+//                characters.append(character)
+//            }
+//            return characters
+//        }
     
     // MARK: - Private methods
     

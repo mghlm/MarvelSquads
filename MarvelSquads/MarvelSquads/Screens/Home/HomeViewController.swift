@@ -50,7 +50,9 @@ final class HomeViewController: UITableViewController {
     // MARK: - Private methods
     
     private func setupNavigationBar() {
-        navigationController?.navigationBar.transparentNavigationBar()
+//        navigationController?.navigationBar.transparentNavigationBar()
+        navigationController?.navigationBar.isTranslucent = false 
+        navigationController?.navigationBar.barTintColor = Color.background.value
         let headerImage = UIImage(named: "HeaderImage")
         let imageView = UIImageView(image: headerImage)
         navigationItem.titleView = imageView

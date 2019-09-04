@@ -24,10 +24,14 @@
 		CC11580F231ED67700726349 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11580E231ED67700726349 /* Color.swift */; };
 		CC115817231FC3F700726349 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115816231FC3F700726349 /* Section.swift */; };
 		CC115819231FC78500726349 /* CharacterDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115818231FC78500726349 /* CharacterDetailsDataSource.swift */; };
+		CC11581C231FF0B400726349 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11581B231FF0B400726349 /* PersistenceService.swift */; };
+		CC1158262320202700726349 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1158252320202700726349 /* Transformer.swift */; };
+		CC1158292320374600726349 /* MarvelSquads.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC1158272320374600726349 /* MarvelSquads.xcdatamodeld */; };
+		CC11582C2320378500726349 /* SquadMember+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11582A2320378500726349 /* SquadMember+CoreDataClass.swift */; };
+		CC11582D2320378500726349 /* SquadMember+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11582B2320378500726349 /* SquadMember+CoreDataProperties.swift */; };
 		CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95C231D02D70051A923 /* AppDelegate.swift */; };
 		CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95E231D02D70051A923 /* HomeViewController.swift */; };
 		CCF1F962231D02D70051A923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F960231D02D70051A923 /* Main.storyboard */; };
-		CCF1F965231D02D70051A923 /* MarvelSquads.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F963231D02D70051A923 /* MarvelSquads.xcdatamodeld */; };
 		CCF1F967231D02D80051A923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F966231D02D80051A923 /* Assets.xcassets */; };
 		CCF1F96A231D02D80051A923 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F968231D02D80051A923 /* LaunchScreen.storyboard */; };
 		CCF1F975231D02D80051A923 /* MarvelSquadsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F974231D02D80051A923 /* MarvelSquadsTests.swift */; };
@@ -37,7 +41,6 @@
 		CCF1F996231D04250051A923 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F995231D04250051A923 /* HomeCoordinator.swift */; };
 		CCF1F99B231D05920051A923 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F99A231D05920051A923 /* APIService.swift */; };
 		CCF1F99D231D059A0051A923 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F99C231D059A0051A923 /* Endpoint.swift */; };
-		CCF1F99F231D0C980051A923 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F99E231D0C980051A923 /* Transformer.swift */; };
 		CCF1F9A2231D103C0051A923 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F9A1231D103C0051A923 /* URLSession+Extensions.swift */; };
 		CCF1F9A5231D131A0051A923 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F9A4231D131A0051A923 /* Character.swift */; };
 		CCF1F9A7231D1A2A0051A923 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F9A6231D1A2A0051A923 /* Comic.swift */; };
@@ -79,11 +82,15 @@
 		CC11580E231ED67700726349 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CC115816231FC3F700726349 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		CC115818231FC78500726349 /* CharacterDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsDataSource.swift; sourceTree = "<group>"; };
+		CC11581B231FF0B400726349 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		CC1158252320202700726349 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		CC1158282320374600726349 /* MarvelSquads.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelSquads.xcdatamodel; sourceTree = "<group>"; };
+		CC11582A2320378500726349 /* SquadMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SquadMember+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CC11582B2320378500726349 /* SquadMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SquadMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CCF1F959231D02D70051A923 /* MarvelSquads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelSquads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF1F95C231D02D70051A923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF1F95E231D02D70051A923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CCF1F961231D02D70051A923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CCF1F964231D02D70051A923 /* MarvelSquads.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelSquads.xcdatamodel; sourceTree = "<group>"; };
 		CCF1F966231D02D80051A923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCF1F969231D02D80051A923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCF1F96B231D02D80051A923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +105,6 @@
 		CCF1F995231D04250051A923 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		CCF1F99A231D05920051A923 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CCF1F99C231D059A0051A923 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		CCF1F99E231D0C980051A923 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		CCF1F9A1231D103C0051A923 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
 		CCF1F9A4231D131A0051A923 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		CCF1F9A6231D1A2A0051A923 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
@@ -190,6 +196,15 @@
 				CC11580E231ED67700726349 /* Color.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CC11582E232037B300726349 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC11582A2320378500726349 /* SquadMember+CoreDataClass.swift */,
+				CC11582B2320378500726349 /* SquadMember+CoreDataProperties.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CCF1F950231D02D70051A923 = {
@@ -295,7 +310,7 @@
 			children = (
 				CCF1F99A231D05920051A923 /* APIService.swift */,
 				CCF1F99C231D059A0051A923 /* Endpoint.swift */,
-				CCF1F99E231D0C980051A923 /* Transformer.swift */,
+				CC1158252320202700726349 /* Transformer.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -303,7 +318,9 @@
 		CCF1F998231D05620051A923 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				CCF1F963231D02D70051A923 /* MarvelSquads.xcdatamodeld */,
+				CC11582E232037B300726349 /* Models */,
+				CC1158272320374600726349 /* MarvelSquads.xcdatamodeld */,
+				CC11581B231FF0B400726349 /* PersistenceService.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -464,6 +481,7 @@
 			files = (
 				CC115817231FC3F700726349 /* Section.swift in Sources */,
 				CC115809231E5B2100726349 /* UIView+Extensions.swift in Sources */,
+				CC1158292320374600726349 /* MarvelSquads.xcdatamodeld in Sources */,
 				CCF1F9A5231D131A0051A923 /* Character.swift in Sources */,
 				CC1157FD231E54FD00726349 /* CharacterDetailsViewController.swift in Sources */,
 				CC115819231FC78500726349 /* CharacterDetailsDataSource.swift in Sources */,
@@ -474,18 +492,20 @@
 				CCF1F9A7231D1A2A0051A923 /* Comic.swift in Sources */,
 				CC1157EC231D45EB00726349 /* HomeViewDataSource.swift in Sources */,
 				CCF1F9A2231D103C0051A923 /* URLSession+Extensions.swift in Sources */,
+				CC11582D2320378500726349 /* SquadMember+CoreDataProperties.swift in Sources */,
 				CCF1F98F231D03A70051A923 /* Coordinator.swift in Sources */,
-				CCF1F99F231D0C980051A923 /* Transformer.swift in Sources */,
 				CC115805231E563C00726349 /* ImageLoader.swift in Sources */,
 				CCF1F99B231D05920051A923 /* APIService.swift in Sources */,
+				CC1158262320202700726349 /* Transformer.swift in Sources */,
+				CC11581C231FF0B400726349 /* PersistenceService.swift in Sources */,
 				CCF1F99D231D059A0051A923 /* Endpoint.swift in Sources */,
 				CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */,
+				CC11582C2320378500726349 /* SquadMember+CoreDataClass.swift in Sources */,
 				CC1157EA231D44E700726349 /* HomeViewModel.swift in Sources */,
 				CCF1F991231D03B50051A923 /* AppCoordinator.swift in Sources */,
 				CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */,
 				CC115807231E58BA00726349 /* ComicsTableViewCell.swift in Sources */,
 				CC11580B231E806A00726349 /* UINavigationBar+Extensions.swift in Sources */,
-				CCF1F965231D02D70051A923 /* MarvelSquads.xcdatamodeld in Sources */,
 				CCF1F996231D04250051A923 /* HomeCoordinator.swift in Sources */,
 				CC115802231E55BD00726349 /* CharacterDetailsTableViewCell.swift in Sources */,
 			);
@@ -820,12 +840,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CCF1F963231D02D70051A923 /* MarvelSquads.xcdatamodeld */ = {
+		CC1158272320374600726349 /* MarvelSquads.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CCF1F964231D02D70051A923 /* MarvelSquads.xcdatamodel */,
+				CC1158282320374600726349 /* MarvelSquads.xcdatamodel */,
 			);
-			currentVersion = CCF1F964231D02D70051A923 /* MarvelSquads.xcdatamodel */;
+			currentVersion = CC1158282320374600726349 /* MarvelSquads.xcdatamodel */;
 			path = MarvelSquads.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

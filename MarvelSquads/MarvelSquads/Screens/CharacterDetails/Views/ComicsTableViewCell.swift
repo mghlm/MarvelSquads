@@ -16,12 +16,7 @@ final class ComicsTableViewCell: UITableViewCell {
     
     var comics: [Comic]! {
         didSet {
-            setupTitleLabel()
-            if let comics = comics, !comics.isEmpty  {
-                setupUI()
-            } else {
-                setupNoComicsLabel()
-            }
+            setupUI()
         }
     }
     
@@ -30,14 +25,6 @@ final class ComicsTableViewCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         lbl.textColor = .white 
         lbl.text = "Last appeared in"
-        
-        return lbl
-    }()
-    
-    lazy private var noComicsLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "Never appeared in a comic"
-        lbl.textAlignment = .center
         
         return lbl
     }()
@@ -70,7 +57,8 @@ final class ComicsTableViewCell: UITableViewCell {
     // MARK: - Private methods
     
     private func setupUI() {
-        backgroundColor = Color.background.value 
+        backgroundColor = Color.background.value
+        setupTitleLabel()
         [thumbNailStackView, titlesStackView].forEach { addSubview($0) }
         setupThumbnailStackView()
         setupImages()
@@ -79,12 +67,7 @@ final class ComicsTableViewCell: UITableViewCell {
     
     private func setupTitleLabel() {
         addSubview(titleLabel)
-        titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
-    }
-    
-    private func setupNoComicsLabel() {
-        addSubview(noComicsLabel)
-        noComicsLabel.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 16, paddingRight: 16, width: 0, height: 0)
+        titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
     }
     
     private func setupThumbnailStackView() {
