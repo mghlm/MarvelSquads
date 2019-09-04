@@ -8,20 +8,20 @@
 
 import UIKit
 
-final class ComicsView: UIView {
+final class ComicsTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
-    var didLoadComics: (() -> Void)?
+    static var id = "ComicsTableViewCellIdentifier"
     
-    var comics: [Comic]? {
+    var comics: [Comic]! {
         didSet {
+            setupTitleLabel()
             if let comics = comics, !comics.isEmpty  {
                 setupUI()
             } else {
                 setupNoComicsLabel()
             }
-            didLoadComics?()
         }
     }
     
@@ -67,17 +67,6 @@ final class ComicsView: UIView {
         return sv
     }()
     
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupTitleLabel()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - Private methods
     
     private func setupUI() {
@@ -117,7 +106,6 @@ final class ComicsView: UIView {
     }
     
     private func setupConstraints() {
-        thumbNailStackView.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: ((UIScreen.main.bounds.width - 48) / 2) * 1.41)
-        
+        thumbNailStackView.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: ((UIScreen.main.bounds.width - 48) / 2) * 1.41)
     }
 }

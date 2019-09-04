@@ -8,23 +8,11 @@
 
 import UIKit
 
-final class CharacterDetailsViewController: UIViewController {
+final class CharacterDetailsTableViewController: UITableViewController {
     
     // MARK: - Dependencies
     
     private var viewModel: CharacterDetailsViewModelType!
-    
-    // MARK: - Private properties
-    
-    private var characterDetailsView: CharacterDetailsView!
-    
-    lazy private var scrollView: UIScrollView = {
-        let sv = UIScrollView()
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.showsVerticalScrollIndicator = false
-        
-        return sv
-    }()
     
     // MARK: - Init
     
@@ -41,35 +29,27 @@ final class CharacterDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCallBacks()
-        view.addSubview(scrollView)
-        scrollView.fillSuperview()
-        setupCharacterDetailsView()
+        setupCallbacks()
+        setupTableView()
     }
     
     // MARK: - Private methods
     
-    private func setupCallBacks() {
-        viewModel.didLoadComics = { [weak self] comics in
-            guard let self = self else { return }
+    private func setupCallbacks() {
+        viewModel.dataSource.didUpdateData = { [weak self] in
             DispatchQueue.main.async {
-                self.characterDetailsView.comics = comics 
+                self?.tableView.reloadData()
             }
         }
     }
     
-    private func setupCharacterDetailsView() {
-        characterDetailsView = CharacterDetailsView(frame: .zero, character: viewModel.character)
-        scrollView.addSubview(characterDetailsView)
-        characterDetailsView.didLoadView = { [weak self] in
-            self?.setupConstraints()
-        }
-        characterDetailsView.fillSuperview()
-        characterDetailsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-    }
-    
-    private func setupConstraints() {
-        characterDetailsView.fillSuperview()
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+    private func setupTableView() {
+        tableView.allowsSelection = false 
+        tableView.backgroundColor = Color.background.value
+        tableView.separatorStyle = .none 
+        tableView.register(CharacterDetailsTableViewCell.self, forCellReuseIdentifier: CharacterDetailsTableViewCell.id)
+        tableView.register(ComicsTableViewCell.self, forCellReuseIdentifier: ComicsTableViewCell.id)
+        tableView.delegate = viewModel.dataSource
+        tableView.dataSource = viewModel.dataSource
     }
 }

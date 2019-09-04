@@ -15,13 +15,15 @@
 		CC1157F9231E502700726349 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1157F8231E502700726349 /* HomeViewModelTests.swift */; };
 		CC1157FD231E54FD00726349 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1157FC231E54FD00726349 /* CharacterDetailsViewController.swift */; };
 		CC1157FF231E554200726349 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1157FE231E554200726349 /* CharacterDetailsViewModel.swift */; };
-		CC115802231E55BD00726349 /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115801231E55BD00726349 /* CharacterDetailsView.swift */; };
+		CC115802231E55BD00726349 /* CharacterDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115801231E55BD00726349 /* CharacterDetailsTableViewCell.swift */; };
 		CC115805231E563C00726349 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115804231E563C00726349 /* ImageLoader.swift */; };
-		CC115807231E58BA00726349 /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115806231E58BA00726349 /* ComicsView.swift */; };
+		CC115807231E58BA00726349 /* ComicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115806231E58BA00726349 /* ComicsTableViewCell.swift */; };
 		CC115809231E5B2100726349 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115808231E5B2100726349 /* UIView+Extensions.swift */; };
 		CC11580B231E806A00726349 /* UINavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11580A231E806A00726349 /* UINavigationBar+Extensions.swift */; };
 		CC11580D231EC6B400726349 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11580C231EC6B400726349 /* CharacterTableViewCell.swift */; };
 		CC11580F231ED67700726349 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11580E231ED67700726349 /* Color.swift */; };
+		CC115817231FC3F700726349 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115816231FC3F700726349 /* Section.swift */; };
+		CC115819231FC78500726349 /* CharacterDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC115818231FC78500726349 /* CharacterDetailsDataSource.swift */; };
 		CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95C231D02D70051A923 /* AppDelegate.swift */; };
 		CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95E231D02D70051A923 /* HomeViewController.swift */; };
 		CCF1F962231D02D70051A923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F960231D02D70051A923 /* Main.storyboard */; };
@@ -68,13 +70,15 @@
 		CC1157F8231E502700726349 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		CC1157FC231E54FD00726349 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		CC1157FE231E554200726349 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
-		CC115801231E55BD00726349 /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
+		CC115801231E55BD00726349 /* CharacterDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		CC115804231E563C00726349 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		CC115806231E58BA00726349 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
+		CC115806231E58BA00726349 /* ComicsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsTableViewCell.swift; sourceTree = "<group>"; };
 		CC115808231E5B2100726349 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		CC11580A231E806A00726349 /* UINavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extensions.swift"; sourceTree = "<group>"; };
 		CC11580C231EC6B400726349 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		CC11580E231ED67700726349 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CC115816231FC3F700726349 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		CC115818231FC78500726349 /* CharacterDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsDataSource.swift; sourceTree = "<group>"; };
 		CCF1F959231D02D70051A923 /* MarvelSquads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelSquads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF1F95C231D02D70051A923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF1F95E231D02D70051A923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				CC115800231E55AD00726349 /* Views */,
 				CC1157FC231E54FD00726349 /* CharacterDetailsViewController.swift */,
 				CC1157FE231E554200726349 /* CharacterDetailsViewModel.swift */,
+				CC115818231FC78500726349 /* CharacterDetailsDataSource.swift */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -172,8 +177,8 @@
 		CC115800231E55AD00726349 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CC115801231E55BD00726349 /* CharacterDetailsView.swift */,
-				CC115806231E58BA00726349 /* ComicsView.swift */,
+				CC115806231E58BA00726349 /* ComicsTableViewCell.swift */,
+				CC115801231E55BD00726349 /* CharacterDetailsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 			children = (
 				CCF1F9A4231D131A0051A923 /* Character.swift */,
 				CCF1F9A6231D1A2A0051A923 /* Comic.swift */,
+				CC115816231FC3F700726349 /* Section.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -456,9 +462,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC115817231FC3F700726349 /* Section.swift in Sources */,
 				CC115809231E5B2100726349 /* UIView+Extensions.swift in Sources */,
 				CCF1F9A5231D131A0051A923 /* Character.swift in Sources */,
 				CC1157FD231E54FD00726349 /* CharacterDetailsViewController.swift in Sources */,
+				CC115819231FC78500726349 /* CharacterDetailsDataSource.swift in Sources */,
 				CCF1F9A9231D21320051A923 /* String+Extensions.swift in Sources */,
 				CC11580D231EC6B400726349 /* CharacterTableViewCell.swift in Sources */,
 				CC11580F231ED67700726349 /* Color.swift in Sources */,
@@ -475,11 +483,11 @@
 				CC1157EA231D44E700726349 /* HomeViewModel.swift in Sources */,
 				CCF1F991231D03B50051A923 /* AppCoordinator.swift in Sources */,
 				CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */,
-				CC115807231E58BA00726349 /* ComicsView.swift in Sources */,
+				CC115807231E58BA00726349 /* ComicsTableViewCell.swift in Sources */,
 				CC11580B231E806A00726349 /* UINavigationBar+Extensions.swift in Sources */,
 				CCF1F965231D02D70051A923 /* MarvelSquads.xcdatamodeld in Sources */,
 				CCF1F996231D04250051A923 /* HomeCoordinator.swift in Sources */,
-				CC115802231E55BD00726349 /* CharacterDetailsView.swift in Sources */,
+				CC115802231E55BD00726349 /* CharacterDetailsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

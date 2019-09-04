@@ -10,33 +10,44 @@ import Foundation
 
 protocol CharacterDetailsViewModelType {
     func getComics()
-    var character: Character { get }
-    var didLoadComics: (([Comic]) -> Void)? { get set }
+    var dataSource: CharacterDetailsDataSource { get }
 }
 
 final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
     
-    // MARK: - Dependencies
-    
-    var character: Character
-    private var apiService: APIServiceType
-    
-    // MARK: - Public properties
-    
-    var didLoadComics: (([Comic]) -> Void)?
-    
-    // MARK: - Init
-    
-    init(character: Character, apiService: APIServiceType) {
-        self.character = character
-        self.apiService = apiService
-        
-        if character.comics == nil {
-            getComics()
+    private var character: Character! {
+        didSet {
+            let section = CharacterDetailsSection(character: character)
+            dataSource.sections.append(section)
+
+            if character.comics == nil {
+                getComics()
+            }
         }
     }
     
+    // MARK: - Dependencies
+    
+    private var apiService: APIServiceType
+    var dataSource: CharacterDetailsDataSource
+    
+    // MARK: - Init
+    
+    init(character: Character, apiService: APIServiceType, dataSource: CharacterDetailsDataSource) {
+        self.apiService = apiService
+        self.dataSource = dataSource
+        self.set(character)
+        
+//        let section = CharacterDetailsSection(character: character)
+//        dataSource.sections.append(section)
+//        dataSource.didUpdateData?()
+    }
+    
     // MARK: - Private methods
+    
+    private func set(_ character: Character) {
+        self.character = character
+    }
     
     func getComics() {
         let id = String(character.id)
@@ -46,7 +57,9 @@ final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
                 print(error)
             case .success(let comicsResponse):
                 let comics = comicsResponse.data.results
-                self.didLoadComics?(comics)
+                let section = ComicDetailsSection(comics: comics)
+                self.dataSource.sections.append(section)
+//                self.dataSource.didUpdateData?()
             }
         }
     }
