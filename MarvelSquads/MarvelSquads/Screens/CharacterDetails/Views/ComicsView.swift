@@ -12,6 +12,8 @@ final class ComicsView: UIView {
     
     // MARK: - Private properties
     
+    var didLoadComics: (() -> Void)?
+    
     var comics: [Comic]? {
         didSet {
             if let comics = comics, !comics.isEmpty  {
@@ -19,14 +21,15 @@ final class ComicsView: UIView {
             } else {
                 setupNoComicsLabel()
             }
+            didLoadComics?()
         }
     }
     
     lazy private var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.boldSystemFont(ofSize: 28)
+        lbl.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        lbl.textColor = .white 
         lbl.text = "Last appeared in"
-//        lbl.textColor = .white 
         
         return lbl
     }()
@@ -78,6 +81,7 @@ final class ComicsView: UIView {
     // MARK: - Private methods
     
     private func setupUI() {
+        backgroundColor = Color.background.value 
         [thumbNailStackView, titlesStackView].forEach { addSubview($0) }
         setupThumbnailStackView()
         setupImages()
@@ -100,7 +104,6 @@ final class ComicsView: UIView {
     }
     
     private func setupImages() {
-        
         if let comics = comics, comics.count > 1 {
             var comicCount = 0
             
@@ -115,5 +118,6 @@ final class ComicsView: UIView {
     
     private func setupConstraints() {
         thumbNailStackView.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: ((UIScreen.main.bounds.width - 48) / 2) * 1.41)
+        
     }
 }

@@ -18,6 +18,14 @@ final class CharacterDetailsViewController: UIViewController {
     
     private var characterDetailsView: CharacterDetailsView!
     
+    lazy private var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.showsVerticalScrollIndicator = false
+        
+        return sv
+    }()
+    
     // MARK: - Init
     
     init(viewModel: CharacterDetailsViewModelType) {
@@ -33,8 +41,10 @@ final class CharacterDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCharacterDetailsView()
         setupCallBacks()
+        view.addSubview(scrollView)
+        scrollView.fillSuperview()
+        setupCharacterDetailsView()
     }
     
     // MARK: - Private methods
@@ -50,9 +60,16 @@ final class CharacterDetailsViewController: UIViewController {
     
     private func setupCharacterDetailsView() {
         characterDetailsView = CharacterDetailsView(frame: .zero, character: viewModel.character)
-        view.addSubview(characterDetailsView)
+        scrollView.addSubview(characterDetailsView)
+        characterDetailsView.didLoadView = { [weak self] in
+            self?.setupConstraints()
+        }
         characterDetailsView.fillSuperview()
+        characterDetailsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
     }
     
-    
+    private func setupConstraints() {
+        characterDetailsView.fillSuperview()
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+    }
 }

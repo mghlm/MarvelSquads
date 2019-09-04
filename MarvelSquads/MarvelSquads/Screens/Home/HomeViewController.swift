@@ -29,7 +29,7 @@ final class HomeViewController: UITableViewController {
 
     override func viewDidLoad() {
         tableView.backgroundColor = Color.background.value
-        navigationController?.navigationBar.transparentNavigationBar()
+        setupNavigationBar()
         setupCallbacks()
         setupTableView()
         viewModel.loadCharacters()
@@ -48,6 +48,13 @@ final class HomeViewController: UITableViewController {
     }
     
     // MARK: - Private methods
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.transparentNavigationBar()
+        let headerImage = UIImage(named: "HeaderImage")
+        let imageView = UIImageView(image: headerImage)
+        navigationItem.titleView = imageView
+    }
     
     private func setupTableView() {
         tableView.separatorStyle = .none 
