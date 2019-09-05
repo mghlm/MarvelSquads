@@ -29,6 +29,8 @@
 		CC1158292320374600726349 /* MarvelSquads.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC1158272320374600726349 /* MarvelSquads.xcdatamodeld */; };
 		CC11582C2320378500726349 /* SquadMember+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11582A2320378500726349 /* SquadMember+CoreDataClass.swift */; };
 		CC11582D2320378500726349 /* SquadMember+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11582B2320378500726349 /* SquadMember+CoreDataProperties.swift */; };
+		CC1158302320FF8800726349 /* SquadHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11582F2320FF8800726349 /* SquadHeaderView.swift */; };
+		CC1158342321032E00726349 /* SquadHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1158332321032E00726349 /* SquadHeaderCollectionViewCell.swift */; };
 		CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95C231D02D70051A923 /* AppDelegate.swift */; };
 		CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95E231D02D70051A923 /* HomeViewController.swift */; };
 		CCF1F962231D02D70051A923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F960231D02D70051A923 /* Main.storyboard */; };
@@ -87,6 +89,8 @@
 		CC1158282320374600726349 /* MarvelSquads.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarvelSquads.xcdatamodel; sourceTree = "<group>"; };
 		CC11582A2320378500726349 /* SquadMember+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SquadMember+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CC11582B2320378500726349 /* SquadMember+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SquadMember+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CC11582F2320FF8800726349 /* SquadHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadHeaderView.swift; sourceTree = "<group>"; };
+		CC1158332321032E00726349 /* SquadHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		CCF1F959231D02D70051A923 /* MarvelSquads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelSquads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF1F95C231D02D70051A923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF1F95E231D02D70051A923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 		CC115800231E55AD00726349 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC115831232101AD00726349 /* Header */,
 				CC115806231E58BA00726349 /* ComicsTableViewCell.swift */,
 				CC115801231E55BD00726349 /* CharacterDetailsTableViewCell.swift */,
 			);
@@ -205,6 +210,15 @@
 				CC11582B2320378500726349 /* SquadMember+CoreDataProperties.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CC115831232101AD00726349 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				CC11582F2320FF8800726349 /* SquadHeaderView.swift */,
+				CC1158332321032E00726349 /* SquadHeaderCollectionViewCell.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		CCF1F950231D02D70051A923 = {
@@ -481,11 +495,13 @@
 			files = (
 				CC115817231FC3F700726349 /* Section.swift in Sources */,
 				CC115809231E5B2100726349 /* UIView+Extensions.swift in Sources */,
+				CC1158302320FF8800726349 /* SquadHeaderView.swift in Sources */,
 				CC1158292320374600726349 /* MarvelSquads.xcdatamodeld in Sources */,
 				CCF1F9A5231D131A0051A923 /* Character.swift in Sources */,
 				CC1157FD231E54FD00726349 /* CharacterDetailsViewController.swift in Sources */,
 				CC115819231FC78500726349 /* CharacterDetailsDataSource.swift in Sources */,
 				CCF1F9A9231D21320051A923 /* String+Extensions.swift in Sources */,
+				CC1158342321032E00726349 /* SquadHeaderCollectionViewCell.swift in Sources */,
 				CC11580D231EC6B400726349 /* CharacterTableViewCell.swift in Sources */,
 				CC11580F231ED67700726349 /* Color.swift in Sources */,
 				CC1157FF231E554200726349 /* CharacterDetailsViewModel.swift in Sources */,
