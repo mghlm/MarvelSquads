@@ -11,12 +11,14 @@ import UIKit
 final class CharacterDetailsDataSource: NSObject {
     
     var didUpdateData: (() -> Void)?
-    var didTapAddToSquadButton: (() -> Void)?
+    var didTapSquadButton: (() -> Void)?
     var sections = [Section]() {
         didSet {
             didUpdateData?()
         }
     }
+    
+    var characterIsInSquad: Bool = false 
 }
 
 extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource {
@@ -37,7 +39,10 @@ extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource
             let character = (section as! CharacterDetailsSection).character
             let cell = tableView.dequeueReusableCell(withIdentifier: CharacterDetailsTableViewCell.id, for: indexPath) as! CharacterDetailsTableViewCell
             cell.character = character
-            cell.delegate = self
+            cell.characterIsInSquad = characterIsInSquad 
+            cell.didTapSquadButton = { [weak self] in
+                self?.didTapSquadButton?()
+            }
             return cell
         case .comicDetails:
             let comics = (section as! ComicDetailsSection).comics
@@ -48,8 +53,8 @@ extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension CharacterDetailsDataSource: CharacterDetailsTableViewCellDelegate {
-    func didTapSquadButton() {
-        self.didTapAddToSquadButton?()
-    }
-}
+//extension CharacterDetailsDataSource: CharacterDetailsTableViewCellDelegate {
+//    func didTapSquadButton() {
+//        self.didTapAddToSquadButton?()
+//    }
+//}

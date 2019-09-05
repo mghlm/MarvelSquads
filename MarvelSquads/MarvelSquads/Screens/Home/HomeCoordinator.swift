@@ -37,7 +37,7 @@ final class HomeCoordinator: HomeCoordinatorType {
     }
     
     func navigateToCharacterDetails(with character: Character) {
-        let characterDetailsViewModel = CharacterDetailsViewModel(character: character, apiService: APIService(), dataSource: CharacterDetailsDataSource())
+        let characterDetailsViewModel = CharacterDetailsViewModel(character: character, apiService: APIService(), persistenceService: PersistenceService(), dataSource: CharacterDetailsDataSource())
         let characterDetailsViewController = CharacterDetailsTableViewController(viewModel: characterDetailsViewModel)
         navigationController.pushViewController(characterDetailsViewController, animated: true)
     }

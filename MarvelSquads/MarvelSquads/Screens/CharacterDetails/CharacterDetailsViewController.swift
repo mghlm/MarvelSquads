@@ -37,9 +37,35 @@ final class CharacterDetailsTableViewController: UITableViewController {
     
     private func setupCallbacks() {
         viewModel.dataSource.didUpdateData = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+            self?.reloadData()
+        }
+        viewModel.dataSource.didTapSquadButton = { [weak self] in
+            guard let self = self else { return }
+            if self.viewModel.dataSource.characterIsInSquad {
+                self.showAddToSquadAlert()
+            } else {
+                self.viewModel.addCharacterToSquad {
+                    self.viewModel.updateSquadStatus()
+                    self.reloadData()
+                }
             }
+        }
+    }
+    
+    private func showAddToSquadAlert() {
+        let alert = UIAlertController(title: "Are you sure you want to fire this character from the squad?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Remove", style: .default, handler: { action in
+            self.viewModel.removeCharacterFromSquad()
+            self.viewModel.updateSquadStatus()
+            self.reloadData()
+        }))
+        present(alert, animated: true)
+    }
+    
+    private func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     

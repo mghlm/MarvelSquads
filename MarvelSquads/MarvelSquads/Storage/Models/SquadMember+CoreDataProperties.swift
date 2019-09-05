@@ -19,7 +19,7 @@ extension SquadMember {
 
     @NSManaged public var id: Int32
     @NSManaged public var name: String?
-    @NSManaged public var characterDescription: String?
+    @NSManaged public var squadMemberDescription: String?
     @NSManaged public var imageUrl: String?
     
 }

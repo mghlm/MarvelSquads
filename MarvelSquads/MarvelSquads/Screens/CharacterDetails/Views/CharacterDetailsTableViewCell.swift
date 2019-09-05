@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol CharacterDetailsTableViewCellDelegate: class {
-    func didTapSquadButton()
-}
+//protocol CharacterDetailsTableViewCellDelegate: class {
+//    func didTapSquadButton()
+//}
 
 final class CharacterDetailsTableViewCell: UITableViewCell {
     
@@ -18,7 +18,15 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
     
     static var id = "CharacterDetailsTableViewCellIdentifier"
     
-    weak var delegate: CharacterDetailsTableViewCellDelegate?
+//    weak var delegate: CharacterDetailsTableViewCellDelegate?
+    
+    var didTapSquadButton: (() -> Void)?
+    
+    var characterIsInSquad: Bool! {
+        didSet {
+            changeButtonState()
+        }
+    }
     
     var character: Character! {
         didSet {
@@ -79,9 +87,13 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
     
     private func setupLabels() {
         titleLabel.text = character.name
-        let buttonTitle = character.isInSquad ? "🔥 Fire from Squad" : "💪 Recruit to Squad"
-        addToSquadButton.setTitle(buttonTitle, for: .normal)
         descriptionLabel.text = character.description
+    }
+    
+    private func changeButtonState() {
+//        addToSquadButton.titleLabel?.text = characterIsInSquad ? "🔥 Fire from Squad" : "💪 Recruit to Squad"
+        let buttonTitle = characterIsInSquad ? "🔥 Fire from Squad" : "💪 Recruit to Squad"
+        addToSquadButton.setTitle(buttonTitle, for: .normal)
     }
     
     private func setupImage() {
@@ -103,6 +115,11 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
     }
     
     @objc private func handleDidTapSquadButton() {
-        delegate?.didTapSquadButton()
+        
+        didTapSquadButton?()
+        
+//        character.isInSquad = character.isInSquad ? false : true
+//
+//        delegate?.didTapSquadButton()
     }
 }

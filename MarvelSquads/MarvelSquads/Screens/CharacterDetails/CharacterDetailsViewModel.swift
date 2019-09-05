@@ -9,15 +9,19 @@
 import Foundation
 
 protocol CharacterDetailsViewModelType {
-    func getComics()
+//    func getComics()
     var dataSource: CharacterDetailsDataSource { get }
+    func addCharacterToSquad(completion: @escaping (() -> Void))
+    func removeCharacterFromSquad()
+    func updateSquadStatus()
+    func characterIsInSquad() -> Bool
 }
 
 final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
     
     private var character: Character! {
         didSet {
-            setupCallbacks()
+            dataSource.characterIsInSquad = characterIsInSquad()
             let section = CharacterDetailsSection(character: character)
             dataSource.sections.append(section)
             getComics()
@@ -27,19 +31,45 @@ final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
     // MARK: - Dependencies
     
     private var apiService: APIServiceType
+    private var persistenceService: PersistenceServiceType
     var dataSource: CharacterDetailsDataSource
     
     // MARK: - Init
     
-    init(character: Character, apiService: APIServiceType, dataSource: CharacterDetailsDataSource) {
+    init(character: Character, apiService: APIServiceType, persistenceService: PersistenceServiceType, dataSource: CharacterDetailsDataSource) {
         self.apiService = apiService
+        self.persistenceService = persistenceService
         self.dataSource = dataSource
+        
         self.set(character)
     }
     
-    // MARK: - Public methods
+    // MARK: - Public methods 
     
-    func getComics() {
+    func addCharacterToSquad(completion: @escaping (() -> Void)) {
+        persistenceService.insertSquadMember(character: self.character, completion: {
+            completion()
+            print("Inserted \(self.character.name) into storage")
+        })
+    }
+    
+    func removeCharacterFromSquad() {
+        persistenceService.removeSquadMember(with: character.id, completion: {
+            print("Removed \(self.character.name) from storage")
+        })
+    }
+    
+    func characterIsInSquad() -> Bool {
+        return persistenceService.squadMemberExist(with: Int32(character.id))
+    }
+    
+    func updateSquadStatus() {
+        dataSource.characterIsInSquad = characterIsInSquad()
+    }
+    
+    // MARK: - Private methods// MARK: - Public methods
+    
+    private func getComics() {
         if let comics = character.comics {
             let section = ComicDetailsSection(comics: comics)
             dataSource.sections.append(section)
@@ -59,17 +89,6 @@ final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
             }
         }
     }
-    
-    func setupCallbacks() {
-        dataSource.didTapAddToSquadButton = { [weak self] in
-            guard let self = self else { return }
-            print(self.character.isInSquad)
-            // change "isInSquad" status of current Character
-            // save or remove caracter from storage
-        }
-    }
-    
-    // MARK: - Private methods
     
     private func set(_ character: Character) {
         self.character = character

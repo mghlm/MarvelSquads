@@ -18,14 +18,14 @@ struct CharactersResponseData: Decodable {
     let results: [Character]
 }
 
-struct Character: Decodable {
+class Character: Decodable {
     let id: Int
     let name: String
     let description: String
     let thumbnail: Thumbnail
     var comics: [Comic]? 
     
-    let isInSquad: Bool = false
+    var isInSquad: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id, name, description, thumbnail
