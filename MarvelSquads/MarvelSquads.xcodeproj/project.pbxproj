@@ -168,6 +168,7 @@
 		CC1157FA231E53EF00726349 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC115831232101AD00726349 /* Header */,
 				CC11580C231EC6B400726349 /* CharacterTableViewCell.swift */,
 			);
 			path = Views;
@@ -187,7 +188,6 @@
 		CC115800231E55AD00726349 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CC115831232101AD00726349 /* Header */,
 				CC115806231E58BA00726349 /* ComicsTableViewCell.swift */,
 				CC115801231E55BD00726349 /* CharacterDetailsTableViewCell.swift */,
 			);

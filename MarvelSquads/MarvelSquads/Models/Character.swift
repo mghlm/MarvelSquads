@@ -18,12 +18,13 @@ struct CharactersResponseData: Decodable {
     let results: [Character]
 }
 
-class Character: Decodable {
+struct Character: Decodable {
     let id: Int
     let name: String
     let description: String
-    let thumbnail: Thumbnail
-    var comics: [Comic]? 
+    let thumbnail: Thumbnail?
+    var comics: [Comic]?
+    var imageUrl: String?
     
     var isInSquad: Bool = false
     

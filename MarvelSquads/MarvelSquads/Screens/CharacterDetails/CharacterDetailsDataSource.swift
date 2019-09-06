@@ -10,8 +10,11 @@ import UIKit
 
 final class CharacterDetailsDataSource: NSObject {
     
+    // MARK: - Public properties
+    
     var didUpdateData: (() -> Void)?
     var didTapSquadButton: (() -> Void)?
+    
     var sections = [Section]() {
         didSet {
             didUpdateData?()
@@ -20,6 +23,8 @@ final class CharacterDetailsDataSource: NSObject {
     
     var characterIsInSquad: Bool = false 
 }
+
+// MARK: - Extensions
 
 extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource {
     
@@ -52,9 +57,3 @@ extension CharacterDetailsDataSource: UITableViewDelegate, UITableViewDataSource
         }
     }
 }
-
-//extension CharacterDetailsDataSource: CharacterDetailsTableViewCellDelegate {
-//    func didTapSquadButton() {
-//        self.didTapAddToSquadButton?()
-//    }
-//}

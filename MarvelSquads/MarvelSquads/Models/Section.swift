@@ -8,10 +8,28 @@
 
 import Foundation
 
+// MARK: - Section
+
 protocol Section {
     var sectionType: SectionType { get }
     var cellCount: Int { get }
 }
+
+//// Header
+//
+//struct HeaderSection: Section {
+//    var sectionType: SectionType {
+//        return .header
+//    }
+//    
+//    var cellCount: Int {
+//        return 1
+//    }
+//    
+//    var squadMembers: [SquadMember]
+//}
+
+// CharacterDetails
 
 struct CharacterDetailsSection: Section {
     var sectionType: SectionType {
@@ -25,6 +43,8 @@ struct CharacterDetailsSection: Section {
     var character: Character
 }
 
+// ComicsDetails
+
 struct ComicDetailsSection: Section {
     var sectionType: SectionType {
         return .comicDetails
@@ -36,6 +56,8 @@ struct ComicDetailsSection: Section {
     
     var comics: [Comic]
 }
+
+// MARK: - Section type 
 
 enum SectionType {
     case characterDetails, comicDetails

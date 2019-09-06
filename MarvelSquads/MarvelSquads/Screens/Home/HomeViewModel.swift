@@ -11,6 +11,9 @@ import Foundation
 protocol HomeViewModelType {
     func loadCharacters()
     var dataSource: HomeViewDataSource { get }
+    var didUpdateHeaderData: (([SquadMember]) -> Void)? { get set }
+    func getSquadMembers(completion: @escaping (([SquadMember]) -> Void))
+    func navigateToCharacterDetails(for squadMember: SquadMember)
 }
 
 final class HomeViewModel: HomeViewModelType {
@@ -22,17 +25,23 @@ final class HomeViewModel: HomeViewModelType {
     private var reachedEndOfCharacters: Bool = false
     private var isLoading: Bool = false
     
+    // MARK: - Public properties
+    
+    var didUpdateHeaderData: (([SquadMember]) -> Void)?
+    
     // MARK: - Dependencies
     
     var apiService: APIServiceType
     var dataSource: HomeViewDataSource
+    var persistenceService: PersistenceServiceType
     var coordinator: HomeCoordinatorType
     
     // MARK: - Init
     
-    init(apiService: APIServiceType, dataSource: HomeViewDataSource, coordinator: HomeCoordinatorType) {
+    init(apiService: APIServiceType, dataSource: HomeViewDataSource, persistenceService: PersistenceService, coordinator: HomeCoordinatorType) {
         self.apiService = apiService
         self.dataSource = dataSource
+        self.persistenceService = persistenceService
         self.coordinator = coordinator
         
         setupCallbacks()
@@ -42,20 +51,7 @@ final class HomeViewModel: HomeViewModelType {
     
     func loadCharacters() {
         guard !reachedEndOfCharacters, !isLoading else { return }
-        
         isLoading = true
-        
-//        apiService.request(endpoint: .getMarvelCharacters(limit: limit, offset: offset)) { result in
-//            switch result {
-//            case .failure(let error):
-//                print(error)
-//            case .success(let characterResponse):
-//                guard let characterData = characterResponse["data"] as? JSON,
-//                      let jsonArray = characterData["results"] as? [JSON] else { return }
-//                var characters = self.createCharacterObjects(with: jsonArray)
-//            }
-//        }
-        
         apiService.request(type: CharactersResponse.self, endpoint: .getMarvelCharacters(limit: limit, offset: offset)) { result in
             switch result {
             case .failure(let error):
@@ -71,27 +67,16 @@ final class HomeViewModel: HomeViewModelType {
         }
     }
     
-//        private func createCharacterObjects(with json: [JSON]) -> [Character] {
-//            var characters = [Character]()
-//            json.forEach {
-//                let character = Character()
-//                guard
-//                    let id = $0["id"] as? Int32,
-//                    let name = $0["name"] as? String,
-//                    let characterDescription = $0["description"] as? String,
-//                    let thumbnail = $0["thumbnail"] as? JSON,
-//                    let path = thumbnail["path"] as? String,
-//                    let pathExtension = thumbnail["extension"] as? String else { return }
-//                
-//                character.id = id
-//                character.name = name
-//                character.characterDescription = characterDescription
-//                character.imageUrl = "\(path).\(pathExtension)"
-//                
-//                characters.append(character)
-//            }
-//            return characters
-//        }
+    func getSquadMembers(completion: @escaping (([SquadMember]) -> Void)) {
+        persistenceService.fetch(SquadMember.self) { squadMembers in
+            completion(squadMembers)
+        }
+    }
+    
+    func navigateToCharacterDetails(for squadMember: SquadMember) {
+        let character = Character(id: Int(squadMember.id), name: squadMember.name ?? "", description: squadMember.squadMemberDescription ?? "", thumbnail: nil, comics: nil, imageUrl: squadMember.imageUrl, isInSquad: true)
+        coordinator.navigateToCharacterDetails(with: character)
+    }
     
     // MARK: - Private methods
     

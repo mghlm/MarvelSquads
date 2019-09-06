@@ -13,6 +13,7 @@ protocol PersistenceServiceType {
     func insertSquadMember(character: Character, completion: @escaping (() -> Void))
     func removeSquadMember(with id: Int, completion: @escaping (() -> Void))
     func squadMemberExist(with id: Int32) -> Bool
+    func fetch<T: NSManagedObject>(_ type: T.Type, completion: @escaping ([T]) -> Void)
 }
 
 final class PersistenceService: PersistenceServiceType {
@@ -30,7 +31,7 @@ final class PersistenceService: PersistenceServiceType {
             squadMemberEntity.id = Int32(character.id)
             squadMemberEntity.name = character.name
             squadMemberEntity.squadMemberDescription = character.description
-            squadMemberEntity.imageUrl = "\(character.thumbnail.path ?? "").\(character.thumbnail.extension ?? "")"
+            squadMemberEntity.imageUrl = "\(character.thumbnail?.path ?? "").\(character.thumbnail?.extension ?? "")"
             do {
                 try context.save()
                 completion()
@@ -53,6 +54,18 @@ final class PersistenceService: PersistenceServiceType {
             completion()
         } catch let error as NSError {
             print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func fetch<T: NSManagedObject>(_ type: T.Type, completion: @escaping ([T]) -> Void) {
+        let request = NSFetchRequest<T>(entityName: String(describing: type))
+        
+        do {
+            let objects = try context.fetch(request)
+            completion(objects)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            completion([])
         }
     }
     

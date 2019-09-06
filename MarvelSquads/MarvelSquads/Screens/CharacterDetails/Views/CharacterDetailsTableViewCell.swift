@@ -8,17 +8,11 @@
 
 import UIKit
 
-//protocol CharacterDetailsTableViewCellDelegate: class {
-//    func didTapSquadButton()
-//}
-
 final class CharacterDetailsTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
     static var id = "CharacterDetailsTableViewCellIdentifier"
-    
-//    weak var delegate: CharacterDetailsTableViewCellDelegate?
     
     var didTapSquadButton: (() -> Void)?
     
@@ -91,14 +85,19 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
     }
     
     private func changeButtonState() {
-//        addToSquadButton.titleLabel?.text = characterIsInSquad ? "🔥 Fire from Squad" : "💪 Recruit to Squad"
         let buttonTitle = characterIsInSquad ? "🔥 Fire from Squad" : "💪 Recruit to Squad"
         addToSquadButton.setTitle(buttonTitle, for: .normal)
     }
     
     private func setupImage() {
-        if let imageUrl = character.thumbnail.imageUrl() {
-            characterImageView.loadImage(with: imageUrl) {
+        var unwrappedImageUrl: URL?
+        if let imageUrl = character.thumbnail?.imageUrl() {
+            unwrappedImageUrl = imageUrl
+        } else if let imageUrl = character.imageUrl, let url = URL(string: imageUrl) {
+            unwrappedImageUrl = url
+        }
+        if let url = unwrappedImageUrl {
+            characterImageView.loadImage(with: url) {
                 let imagePixelWidth = self.characterImageView.image?.size.width ?? 0
                 let imagePixelHeight = self.characterImageView.image?.size.height ?? 0
                 let imageHeight = (UIScreen.main.bounds.width / imagePixelWidth) * imagePixelHeight
@@ -115,11 +114,6 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
     }
     
     @objc private func handleDidTapSquadButton() {
-        
         didTapSquadButton?()
-        
-//        character.isInSquad = character.isInSquad ? false : true
-//
-//        delegate?.didTapSquadButton()
     }
 }

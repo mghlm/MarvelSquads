@@ -10,20 +10,17 @@ import UIKit
 
 final class HomeViewDataSource: NSObject {
     
+    // MARK: - Public propreties
+    
     var didLoadData: (() -> Void)?
     var didTapCell: ((Character) -> Void)?
     var loadMoreCharacters: (() -> Void)?
-    
-    // MARK: - Public propreties
     
     var characters = [Character]()
     
 }
 
 extension HomeViewDataSource: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-//        indexPaths.forEach { }
-//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = characters.count - 1
@@ -56,6 +53,5 @@ extension HomeViewDataSource: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.row]
         didTapCell?(character)
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

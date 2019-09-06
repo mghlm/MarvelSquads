@@ -8,11 +8,29 @@
 
 import UIKit
 
-final class HomeViewController: UITableViewController {
+final class HomeViewController: UIViewController {
     
     //MARK: - Dependencies
     
     private var viewModel: HomeViewModelType!
+    private var tableViewTopAnchor: NSLayoutConstraint!
+    
+    // MARK: - Private properties
+    
+    var hasSquadMembers: Bool = false
+    
+    private lazy var headerView: SquadHeaderView! = {
+        let hv = SquadHeaderView(frame: .zero, squadMembers: [SquadMember]())
+        
+        return hv
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.id)
+        
+        return tv
+    }()
     
     // MARK: - Init
     
@@ -31,12 +49,38 @@ final class HomeViewController: UITableViewController {
         tableView.backgroundColor = Color.background.value
         setupNavigationBar()
         setupCallbacks()
-        setupTableView()
+        setupUI()
         viewModel.loadCharacters()
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateHeaderView()
+    }
+    
     // MARK: - Private methods
+    
+    private func setupUI() {
+        [headerView, tableView].forEach { view.addSubview($0) }
+        updateHeaderView()
+        tableView.separatorStyle = .none
+        tableView.delegate = viewModel.dataSource
+        tableView.dataSource = viewModel.dataSource
+        
+        setupConstraints()
+    }
+    
+    private func updateHeaderView() {
+        viewModel.getSquadMembers { [weak self] squadMembers in
+            guard let self = self else { return }
+            self.hasSquadMembers = !squadMembers.isEmpty
+            DispatchQueue.main.async {
+                self.headerView.squadMembers = squadMembers
+                self.tableViewTopAnchor.constant = squadMembers.isEmpty ? 0 : 170
+            }
+        }
+    }
     
     private func setupCallbacks() {
         viewModel.dataSource.didLoadData = { [weak self] in
@@ -45,12 +89,15 @@ final class HomeViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        headerView.didTapSquadMember = { [weak self] squadMember in
+            guard let self = self else { return }
+            self.viewModel.navigateToCharacterDetails(for: squadMember)
+        }
     }
     
     // MARK: - Private methods
     
     private func setupNavigationBar() {
-//        navigationController?.navigationBar.transparentNavigationBar()
         navigationController?.navigationBar.isTranslucent = false 
         navigationController?.navigationBar.barTintColor = Color.background.value
         let headerImage = UIImage(named: "HeaderImage")
@@ -58,11 +105,11 @@ final class HomeViewController: UITableViewController {
         navigationItem.titleView = imageView
     }
     
-    private func setupTableView() {
-        tableView.separatorStyle = .none 
-        tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.id)
-        tableView.delegate = viewModel.dataSource
-        tableView.dataSource = viewModel.dataSource
+    private func setupConstraints() {
+        headerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 170)
+        tableView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        tableViewTopAnchor = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
+        tableViewTopAnchor.isActive = true
     }
 }
 

@@ -59,7 +59,7 @@ final class CharacterTableViewCell: UITableViewCell {
     }
     
     private func setupImage() {
-        if let imageUrl = character.thumbnail.imageUrl() {
+        if let imageUrl = character.thumbnail?.imageUrl() {
             characterImageView.loadImage(with: imageUrl)
         }
     }

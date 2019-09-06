@@ -9,7 +9,6 @@
 import Foundation
 
 protocol CharacterDetailsViewModelType {
-//    func getComics()
     var dataSource: CharacterDetailsDataSource { get }
     func addCharacterToSquad(completion: @escaping (() -> Void))
     func removeCharacterFromSquad()
@@ -18,6 +17,8 @@ protocol CharacterDetailsViewModelType {
 }
 
 final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
+    
+    // MARK: - Private properties
     
     private var character: Character! {
         didSet {
@@ -67,7 +68,7 @@ final class CharacterDetailsViewModel: CharacterDetailsViewModelType {
         dataSource.characterIsInSquad = characterIsInSquad()
     }
     
-    // MARK: - Private methods// MARK: - Public methods
+    // MARK: - Private methods
     
     private func getComics() {
         if let comics = character.comics {
