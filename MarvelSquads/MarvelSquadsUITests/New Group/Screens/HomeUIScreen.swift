@@ -22,7 +22,7 @@ enum HomeUIScreen {
     
     static func assertScreenExist(in app: XCUIApplication) {
         XCTAssert(HomeUIScreen.headerView.component(in: app).exists)
-        XCTAssert(HomeUIScreen.tableView.component(in: app).exists)
+        XCTAssert(HomeUIScreen.tableView.component(in: app).waitForExistence(timeout: 5))
     }
     
     static func assertScreenDoesNotExist(in app: XCUIApplication) {

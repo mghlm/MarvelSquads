@@ -42,7 +42,7 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
         lbl.font = UIFont.boldSystemFont(ofSize: 34)
         lbl.textColor = .white
         lbl.numberOfLines = 2
-        lbl.accessibilityIdentifier = "characterDetailsTitleLabelIdentifier"
+        lbl.accessibilityIdentifier = "characterNameLabelIdentifier"
         
         return lbl
     }()
@@ -55,6 +55,7 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
         btn.clipsToBounds = true
+        btn.accessibilityIdentifier = "addToSquadButtonIdentifier"
         
         return btn
     }()
@@ -64,7 +65,7 @@ final class CharacterDetailsTableViewCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 17)
         lbl.textColor = .white
         lbl.numberOfLines = 0
-        lbl.accessibilityIdentifier = "characterDetailsDescriptionLabelIdentifier"
+        lbl.accessibilityIdentifier = "characterDescriptionIdentifier"
         
         return lbl
     }()

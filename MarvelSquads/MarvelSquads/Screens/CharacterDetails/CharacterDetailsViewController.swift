@@ -77,6 +77,7 @@ final class CharacterDetailsTableViewController: UITableViewController {
         tableView.register(ComicsTableViewCell.self, forCellReuseIdentifier: ComicsTableViewCell.id)
         tableView.delegate = viewModel.dataSource
         tableView.dataSource = viewModel.dataSource
+        tableView.accessibilityIdentifier = "charactersTableViewIdentifier"
     }
 }
 

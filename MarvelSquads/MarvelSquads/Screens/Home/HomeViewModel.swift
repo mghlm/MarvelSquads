@@ -56,7 +56,7 @@ final class HomeViewModel: HomeViewModelType {
     
     // MARK: - Init
     
-    init(apiService: APIServiceType, dataSource: HomeViewDataSource, persistenceService: PersistenceService, coordinator: HomeCoordinatorType) {
+    init(apiService: APIServiceType, dataSource: HomeViewDataSource, persistenceService: PersistenceServiceType, coordinator: HomeCoordinatorType) {
         self.apiService = apiService
         self.dataSource = dataSource
         self.persistenceService = persistenceService

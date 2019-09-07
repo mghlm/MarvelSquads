@@ -14,11 +14,15 @@ class HomeViewModelTests: XCTestCase {
     var viewModel: HomeViewModelType!
     var apiService: APIServiceMock!
     var dataSource: HomeViewDataSource!
+    var persistenceService: PersistenceServiceType!
+    var coordinator: HomeCoordinatorType!
 
     override func setUp() {
         apiService = APIServiceMock()
         dataSource = HomeViewDataSource()
-        viewModel = HomeViewModel(apiService: apiService, dataSource: dataSource)
+        persistenceService = PersistenceService()
+        coordinator = HomeCoordinatorMock(navigationController: UINavigationController())
+        viewModel = HomeViewModel(apiService: apiService, dataSource: dataSource, persistenceService: persistenceService, coordinator: coordinator)
     }
 
     func testLoadCharactersIsCalledAndResponseIsSuccess() {
@@ -34,8 +38,8 @@ class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(character.id, 123)
         XCTAssertEqual(character.name, "Hulk")
         XCTAssertEqual(character.description, "He's green and strong")
-        XCTAssertEqual(character.thumbnail.path, "https://hulkimage.com/hulk")
-        XCTAssertEqual(character.thumbnail.extension, "jpg")
+        XCTAssertEqual(character.thumbnail?.path, "https://hulkimage.com/hulk")
+        XCTAssertEqual(character.thumbnail?.extension, "jpg")
         
         XCTAssertEqual(dataSource.characters.count, 2)
     }

@@ -33,6 +33,9 @@
 		CC1158342321032E00726349 /* SquadHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1158332321032E00726349 /* SquadHeaderCollectionViewCell.swift */; };
 		CC1158382323CDDA00726349 /* HomeUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1158372323CDDA00726349 /* HomeUIScreen.swift */; };
 		CC11583A2323CDE900726349 /* CharacterDetailsUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1158392323CDE900726349 /* CharacterDetailsUIScreen.swift */; };
+		CC11583D2323FC5700726349 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11583C2323FC5600726349 /* CoreDataHelpers.swift */; };
+		CC11583F2323FC9100726349 /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11583E2323FC9100726349 /* DataReader.swift */; };
+		CC1158412323FD6C00726349 /* HomeCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1158402323FD6C00726349 /* HomeCoordinatorMock.swift */; };
 		CCF1F95D231D02D70051A923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95C231D02D70051A923 /* AppDelegate.swift */; };
 		CCF1F95F231D02D70051A923 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F95E231D02D70051A923 /* HomeViewController.swift */; };
 		CCF1F962231D02D70051A923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F960231D02D70051A923 /* Main.storyboard */; };
@@ -95,6 +98,9 @@
 		CC1158332321032E00726349 /* SquadHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC1158372323CDDA00726349 /* HomeUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIScreen.swift; sourceTree = "<group>"; };
 		CC1158392323CDE900726349 /* CharacterDetailsUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsUIScreen.swift; sourceTree = "<group>"; };
+		CC11583C2323FC5600726349 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		CC11583E2323FC9100726349 /* DataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
+		CC1158402323FD6C00726349 /* HomeCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorMock.swift; sourceTree = "<group>"; };
 		CCF1F959231D02D70051A923 /* MarvelSquads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelSquads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF1F95C231D02D70051A923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF1F95E231D02D70051A923 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				CC1157EF231D7CE600726349 /* APIServiceMock.swift */,
+				CC1158402323FD6C00726349 /* HomeCoordinatorMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -242,6 +249,15 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		CC11583B2323FC4200726349 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CC11583C2323FC5600726349 /* CoreDataHelpers.swift */,
+				CC11583E2323FC9100726349 /* DataReader.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		CCF1F950231D02D70051A923 = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +296,7 @@
 		CCF1F973231D02D80051A923 /* MarvelSquadsTests */ = {
 			isa = PBXGroup;
 			children = (
+				CC11583B2323FC4200726349 /* Helpers */,
 				CC1157F5231E4FD900726349 /* Tests */,
 				CC1157EE231D7CD800726349 /* JSON */,
 				CC1157ED231D7CD000726349 /* Mocks */,
@@ -554,7 +571,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC1157F0231D7CE600726349 /* APIServiceMock.swift in Sources */,
+				CC1158412323FD6C00726349 /* HomeCoordinatorMock.swift in Sources */,
+				CC11583F2323FC9100726349 /* DataReader.swift in Sources */,
 				CCF1F975231D02D80051A923 /* MarvelSquadsTests.swift in Sources */,
+				CC11583D2323FC5700726349 /* CoreDataHelpers.swift in Sources */,
 				CC1157F9231E502700726349 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

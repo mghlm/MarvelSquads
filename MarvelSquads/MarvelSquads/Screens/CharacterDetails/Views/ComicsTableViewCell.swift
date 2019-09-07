@@ -25,6 +25,7 @@ final class ComicsTableViewCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         lbl.textColor = .white 
         lbl.text = "Last appeared in"
+        lbl.accessibilityIdentifier = "comicsTitleLabelIdentifier"
         
         return lbl
     }()
@@ -62,6 +63,7 @@ final class ComicsTableViewCell: UITableViewCell {
         sv.spacing = 16
         sv.axis = .horizontal
         sv.distribution = .fillEqually
+        sv.accessibilityIdentifier = "comicsStackViewIdentifier"
         
         return sv
     }()
@@ -71,6 +73,7 @@ final class ComicsTableViewCell: UITableViewCell {
         sv.spacing = 16
         sv.axis = .horizontal
         sv.distribution = .fillEqually
+        sv.accessibilityIdentifier = "comicsTitlesStackViewIdentifier"
         
         return sv
     }()
@@ -95,6 +98,7 @@ final class ComicsTableViewCell: UITableViewCell {
         otherComicsLabel?.textColor = .white
         otherComicsLabel?.textAlignment = .center
         otherComicsLabel?.font = UIFont.systemFont(ofSize: 17)
+        otherComicsLabel?.accessibilityIdentifier = "otherComicsLabelIdentifier"
         let numberOfComics = comics.count - 2
         otherComicsLabel?.text = numberOfComics > 1 ? "and \(numberOfComics) other comics" : "and \(numberOfComics) other comic"
     }

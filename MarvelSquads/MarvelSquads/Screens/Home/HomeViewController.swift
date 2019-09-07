@@ -21,6 +21,7 @@ final class HomeViewController: UIViewController {
     
     private lazy var headerView: SquadHeaderView! = {
         let hv = SquadHeaderView(frame: .zero, squadMembers: [SquadMember]())
+        hv.accessibilityIdentifier = "homeScreenHeaderView"
         
         return hv
     }()
@@ -28,6 +29,7 @@ final class HomeViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.id)
+        tv.accessibilityIdentifier = "homeScreenTableViewIdentifier"
         
         return tv
     }()

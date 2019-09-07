@@ -15,17 +15,24 @@ final class APIServiceMock: APIServiceType {
     var isSuccessForComics: Bool = true
     
     let charactersResponseModel = CharactersResponse(data: CharactersResponseData(limit: 20, total: 200,
-                                                                                  results: [Character(id: 123,
-                                                                                                      name: "Hulk",
-                                                                                                      description: "He's green and strong",
-                                                                                                      thumbnail: Thumbnail(path: "https://hulkimage.com/hulk",
-                                                                                                                           extension: "jpg")),
-                                                                                            Character(id: 456,
-                                                                                                      name: "Ironman",
-                                                                                                      description: "He's rich and smart",
-                                                                                                      thumbnail: Thumbnail(path: "https://ironmanimage.com/ironman",
-                                                                                                                           extension: "jpg"))
-        ]))
+                                                                                  results: [
+                                                                                    
+                                                                                    Character(id: 123,
+                                                                                              name: "Hulk",
+                                                                                              description: "He's green and strong",
+                                                                                              thumbnail: Thumbnail(path: "https://hulkimage.com/hulk",
+                                                                                                                   extension: "jpg"),
+                                                                                              comics: nil,
+                                                                                              imageUrl: "",
+                                                                                              isInSquad: false),
+                                                                                    Character(id: 456,
+                                                                                              name: "Ironman",
+                                                                                              description: "He's rich and smart",
+                                                                                              thumbnail: Thumbnail(path: "https://ironmanimage.com/ironman",
+                                                                                                                   extension: "jpg"),
+                                                                                              comics: nil,
+                                                                                              imageUrl: "",
+                                                                                              isInSquad: false)]))
     
     let comicsResponseModel = CharacterComicsResponse(data: CharacterComicsResponseData(results: [Comic(title: "The Incredible Hulk",
                                                                                                         thumbnail: Thumbnail(path: "https://hulkimage.com/hulk",

@@ -33,12 +33,13 @@ To test the app simply clone the repo, and build in latest version of Xcode. No 
 ### Known issues
 
 - Loading spinners missing for Comics section in details view
-- Character model is not NSManagedObject, so when saving a character, instead of saving the actual character, a new "SquadMember" object is created. Due to time constraints I haven't fixed this design flaw, but it is something I would have done different if I were to build a similar app again, basically designing with CoreData in mind from the beginning. 
+- Character model is not NSManagedObject, so when saving a character, instead of saving the actual character, a new "SquadMember" object is created. Due to time constraints I haven't fixed this design flaw, but it is something I would have done different if I were to build a similar app again; basically designing with CoreData in mind from the beginning. 
 
 ### Future Improvements / Additions
 
 - Implement a search function 
 - A way to navigate to comics details and see more related comics
+- Setup dedicated UI Testing environment with separate database etc. 
 
 
 
