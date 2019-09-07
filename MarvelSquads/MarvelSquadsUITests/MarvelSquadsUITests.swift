@@ -27,7 +27,7 @@ class MarvelSquadsUITests: XCTestCase {
         HomeUIScreen.tableView.component(in: app).cells.element(boundBy: 1).tap()
         
         // Assert details screen
-        CharacterDetailsScreen.assertScreenExist(in: app)
+        CharacterDetailsUIScreen.assertScreenExist(in: app)
     }
 
 }
