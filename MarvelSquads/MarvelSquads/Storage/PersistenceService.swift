@@ -10,9 +10,32 @@ import Foundation
 import CoreData
 
 protocol PersistenceServiceType {
+    
+    /// Inserts a character into database
+    ///
+    /// - Parameters:
+    ///   - character: Character to insert
+    ///   - completion: Completion when inertion is successfully  done
     func insertSquadMember(character: Character, completion: @escaping (() -> Void))
+    
+    /// Removes a character from database
+    ///
+    /// - Parameters:
+    ///   - id: Id of character to remove
+    ///   - completion: Completion when character has been successfully removed
     func removeSquadMember(with id: Int, completion: @escaping (() -> Void))
+    
+    /// Checks if a character exist in database
+    ///
+    /// - Parameter id: Id of character to check
+    /// - Returns: True if character ecist
     func squadMemberExist(with id: Int32) -> Bool
+    
+    /// Fetches all of specified type from database
+    ///
+    /// - Parameters:
+    ///   - type: Type of object to fetch all of
+    ///   - completion: Completes with array of all specified objects
     func fetch<T: NSManagedObject>(_ type: T.Type, completion: @escaping ([T]) -> Void)
 }
 

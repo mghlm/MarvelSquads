@@ -9,10 +9,27 @@
 import Foundation
 
 protocol HomeViewModelType {
+    
+    /// Fetches the characters
     func loadCharacters()
+    
+    /// The datasource for the home screen, incl. tableview delegate/datasource methods
     var dataSource: HomeViewDataSource { get }
+    
+    /// Callback to reload home screen view after data change
     var didUpdateHeaderData: (([SquadMember]) -> Void)? { get set }
+    
+    /// Completes with potential error as NetworkError
+    var didSendError: ((NetworkError) -> Void)? { get set }
+    
+    /// Gets all squad members from database
+    ///
+    /// - Parameter completion: completes with array of squadmembers
     func getSquadMembers(completion: @escaping (([SquadMember]) -> Void))
+    
+    /// Navigate to selected squadmember
+    ///
+    /// - Parameter squadMember: Selected squadmember
     func navigateToCharacterDetails(for squadMember: SquadMember)
 }
 
@@ -28,6 +45,7 @@ final class HomeViewModel: HomeViewModelType {
     // MARK: - Public properties
     
     var didUpdateHeaderData: (([SquadMember]) -> Void)?
+    var didSendError: ((NetworkError) -> Void)?
     
     // MARK: - Dependencies
     
@@ -56,7 +74,7 @@ final class HomeViewModel: HomeViewModelType {
             switch result {
             case .failure(let error):
                 self.isLoading = false
-                print(error)
+                self.didSendError?(error)
             case .success(let response):
                 let characters = response.data.results
                 self.dataSource.characters.append(contentsOf: characters)

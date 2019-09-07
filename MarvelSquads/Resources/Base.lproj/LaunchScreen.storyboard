@@ -17,7 +17,25 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderImage" translatesAutoresizingMaskIntoConstraints="NO" id="Vm7-vc-6BQ">
+                                <rect key="frame" x="167" y="232" width="80" height="32"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Squads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ad-Ce-a2X">
+                                <rect key="frame" x="166" y="279" width="82" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.13359954953193665" green="0.1486506462097168" blue="0.16863042116165161" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Vm7-vc-6BQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-200" id="4uO-pn-Wue"/>
+                            <constraint firstItem="Vm7-vc-6BQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Bfk-Tf-XKO"/>
+                            <constraint firstItem="0Ad-Ce-a2X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UMx-Xy-7Gm"/>
+                            <constraint firstItem="0Ad-Ce-a2X" firstAttribute="top" secondItem="Vm7-vc-6BQ" secondAttribute="bottom" constant="15" id="bs7-u4-QTK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0Ad-Ce-a2X" secondAttribute="bottom" constant="532" id="z8d-CZ-ulV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -26,4 +44,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HeaderImage" width="80" height="32"/>
+    </resources>
 </document>

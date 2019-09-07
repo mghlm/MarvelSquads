@@ -93,6 +93,10 @@ final class HomeViewController: UIViewController {
             guard let self = self else { return }
             self.viewModel.navigateToCharacterDetails(for: squadMember)
         }
+        viewModel.didSendError = { [weak self] error in
+            guard let self = self else { return }
+            self.showAlert(with: "Error", message: error.localizedDescription, delay: 5)
+        }
     }
     
     // MARK: - Private methods
@@ -110,6 +114,16 @@ final class HomeViewController: UIViewController {
         tableView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         tableViewTopAnchor = tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
         tableViewTopAnchor.isActive = true
+    }
+    
+    private func showAlert(with title: String, message: String?, delay: Double) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        present(alert, animated: true)
+        
+        let deadline = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

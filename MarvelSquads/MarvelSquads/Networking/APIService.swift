@@ -72,6 +72,7 @@ final class APIService: APIServiceType {
 }
 
 enum NetworkError: String, Error {
+    // more cases, better descriptions etc...
     case invalidStatusCode = "Bad status code"
     case decodeError = "Decode error"
     case networkError = "Network error"

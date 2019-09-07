@@ -67,6 +67,6 @@ final class CharacterTableViewCell: UITableViewCell {
     private func setupConstraints() {
         containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
         characterImageView.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 16, paddingLeft: 16, paddingBottom: 16, paddingRight: 0, width: 44, height: 44)
-        titleLabel.anchor(top: containerView.topAnchor, left: characterImageView.rightAnchor, bottom: containerView.bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
+        titleLabel.anchor(top: containerView.topAnchor, left: characterImageView.rightAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
     }
 }
