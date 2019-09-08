@@ -30,8 +30,7 @@ class MarvelSquadsUITests: XCTestCase {
         
         // Assert details screen
         CharacterDetailsUIScreen.assertScreenExist(in: app)
-        
-        
+
     }
     
     private func waitForElementToAppear(element: XCUIElement, timeout: TimeInterval = 5,  file: String = #file, line: Int = #line) {

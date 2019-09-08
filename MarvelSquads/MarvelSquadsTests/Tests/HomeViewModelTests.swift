@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import MarvelSquads
 
 class HomeViewModelTests: XCTestCase {
@@ -16,6 +17,8 @@ class HomeViewModelTests: XCTestCase {
     var dataSource: HomeViewDataSource!
     var persistenceService: PersistenceServiceType!
     var coordinator: HomeCoordinatorType!
+    
+    var contextMock: NSManagedObjectContext!
 
     override func setUp() {
         apiService = APIServiceMock()
@@ -23,6 +26,18 @@ class HomeViewModelTests: XCTestCase {
         persistenceService = PersistenceService()
         coordinator = HomeCoordinatorMock(navigationController: UINavigationController())
         viewModel = HomeViewModel(apiService: apiService, dataSource: dataSource, persistenceService: persistenceService, coordinator: coordinator)
+        
+        contextMock = CoreDataHelpers().contextMock
+    }
+    
+    func testDatasourceSetup() {
+        XCTAssertNotNil(viewModel.dataSource)
+    }
+    
+    func testFetchSquadMembersFromStorage() {
+        insertSquadMembers()
+        let fetchedMembers = fetchSquadMembers()
+        XCTAssertTrue(fetchedMembers.count == 3, "Wrong number of members: \(fetchedMembers.count). Should be 3.")
     }
 
     func testLoadCharactersIsCalledAndResponseIsSuccess() {
@@ -42,5 +57,24 @@ class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(character.thumbnail?.extension, "jpg")
         
         XCTAssertEqual(dataSource.characters.count, 2)
+    }
+    
+    // MARK: - Private methods
+    
+    private func insertSquadMembers() {
+        guard let entity = NSEntityDescription.entity(forEntityName: "SquadMember", in: self.contextMock) else { return }
+        for _ in 0...2 {
+            let squadMember = SquadMember.init(entity: entity, insertInto: self.contextMock)
+            squadMember.id = 123
+            squadMember.name = "Hulk"
+            squadMember.squadMemberDescription = "He's green"
+            squadMember.imageUrl = "https://hulkimage.com/hulk.jpg"
+        }
+    }
+    
+    private func fetchSquadMembers() -> [SquadMember] {
+        let request: NSFetchRequest<SquadMember> = SquadMember.fetchRequest()
+        let results = try! contextMock.fetch(request)
+        return results
     }
 }

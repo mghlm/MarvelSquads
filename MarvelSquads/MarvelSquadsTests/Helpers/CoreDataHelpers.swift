@@ -11,7 +11,7 @@ import CoreData
 class CoreDataHelpers {
     
     lazy var persistanceContainerMock: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TrendingMovies")
+        let container = NSPersistentContainer(name: "MarvelSquads")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         container.persistentStoreDescriptions = [description]
