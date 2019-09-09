@@ -50,6 +50,7 @@ enum Endpoint {
     }
     
     var parameters: [URLQueryItem] {
+        // To be stored in keychain
         let apiKey = "b7de28137b3c1b7288e03df1efe72a6d"
         let privateKey = "0bf21185bb9494578b9927a6b38fd35a9c06e777"
         let ts = Date().timeIntervalSince1970.description

@@ -13,8 +13,6 @@ struct CharacterComicsResponse: Decodable {
 }
 
 struct CharacterComicsResponseData: Decodable {
-//    let limit: Int
-//    let total: Int
     let results: [Comic]
 }
 

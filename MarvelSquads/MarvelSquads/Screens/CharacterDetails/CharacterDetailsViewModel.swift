@@ -9,10 +9,24 @@
 import Foundation
 
 protocol CharacterDetailsViewModelType {
+    
+    /// Datasource + tablevie delegate and datasource methods
     var dataSource: CharacterDetailsDataSource { get }
+    
+    /// Adds character to squad
+    ///
+    /// - Parameter completion: Completes when character is successfully saved to squad
     func addCharacterToSquad(completion: @escaping (() -> Void))
+    
+    /// Removes character from squad
     func removeCharacterFromSquad()
+    
+    /// Reload view that shows characters currently in squad
     func updateSquadStatus()
+    
+    /// Checks if the character is in squad
+    ///
+    /// - Returns: True if character is in squad
     func characterIsInSquad() -> Bool
 }
 

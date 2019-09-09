@@ -15,20 +15,6 @@ protocol Section {
     var cellCount: Int { get }
 }
 
-//// Header
-//
-//struct HeaderSection: Section {
-//    var sectionType: SectionType {
-//        return .header
-//    }
-//    
-//    var cellCount: Int {
-//        return 1
-//    }
-//    
-//    var squadMembers: [SquadMember]
-//}
-
 // CharacterDetails
 
 struct CharacterDetailsSection: Section {

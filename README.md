@@ -38,9 +38,10 @@ To test the app simply clone the repo, and build in latest version of Xcode. No 
 ### Future Improvements / Additions
 
 - Implement a search function 
-- A way to navigate to comics details and see more related comics
+- Add more unit tests
 - Setup dedicated UI Testing environment with separate database etc. 
-
+- Move magic numbers, strings to constant file 
+- A way to navigate to comics details and see more related comics
 
 
 ### Screenshots

@@ -41,7 +41,6 @@
 		CCF1F962231D02D70051A923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F960231D02D70051A923 /* Main.storyboard */; };
 		CCF1F967231D02D80051A923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F966231D02D80051A923 /* Assets.xcassets */; };
 		CCF1F96A231D02D80051A923 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF1F968231D02D80051A923 /* LaunchScreen.storyboard */; };
-		CCF1F975231D02D80051A923 /* MarvelSquadsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F974231D02D80051A923 /* MarvelSquadsTests.swift */; };
 		CCF1F980231D02D80051A923 /* MarvelSquadsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F97F231D02D80051A923 /* MarvelSquadsUITests.swift */; };
 		CCF1F98F231D03A70051A923 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F98E231D03A70051A923 /* Coordinator.swift */; };
 		CCF1F991231D03B50051A923 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1F990231D03B50051A923 /* AppCoordinator.swift */; };
@@ -109,7 +108,6 @@
 		CCF1F969231D02D80051A923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCF1F96B231D02D80051A923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCF1F970231D02D80051A923 /* MarvelSquadsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelSquadsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCF1F974231D02D80051A923 /* MarvelSquadsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelSquadsTests.swift; sourceTree = "<group>"; };
 		CCF1F976231D02D80051A923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCF1F97B231D02D80051A923 /* MarvelSquadsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelSquadsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF1F97F231D02D80051A923 /* MarvelSquadsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelSquadsUITests.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 				CC1157F5231E4FD900726349 /* Tests */,
 				CC1157EE231D7CD800726349 /* JSON */,
 				CC1157ED231D7CD000726349 /* Mocks */,
-				CCF1F974231D02D80051A923 /* MarvelSquadsTests.swift */,
 				CCF1F976231D02D80051A923 /* Info.plist */,
 			);
 			path = MarvelSquadsTests;
@@ -573,7 +570,6 @@
 				CC1157F0231D7CE600726349 /* APIServiceMock.swift in Sources */,
 				CC1158412323FD6C00726349 /* HomeCoordinatorMock.swift in Sources */,
 				CC11583F2323FC9100726349 /* DataReader.swift in Sources */,
-				CCF1F975231D02D80051A923 /* MarvelSquadsTests.swift in Sources */,
 				CC11583D2323FC5700726349 /* CoreDataHelpers.swift in Sources */,
 				CC1157F9231E502700726349 /* HomeViewModelTests.swift in Sources */,
 			);

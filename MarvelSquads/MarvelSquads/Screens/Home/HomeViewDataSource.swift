@@ -20,6 +20,8 @@ final class HomeViewDataSource: NSObject {
     
 }
 
+// MARK: - Extensions
+
 extension HomeViewDataSource: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

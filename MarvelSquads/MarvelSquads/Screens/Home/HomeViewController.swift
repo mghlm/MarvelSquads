@@ -17,8 +17,6 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Private properties
     
-    var hasSquadMembers: Bool = false
-    
     private lazy var headerView: SquadHeaderView! = {
         let hv = SquadHeaderView(frame: .zero, squadMembers: [SquadMember]())
         hv.accessibilityIdentifier = "homeScreenHeaderView"
@@ -76,7 +74,6 @@ final class HomeViewController: UIViewController {
     private func updateHeaderView() {
         viewModel.getSquadMembers { [weak self] squadMembers in
             guard let self = self else { return }
-            self.hasSquadMembers = !squadMembers.isEmpty
             DispatchQueue.main.async {
                 self.headerView.squadMembers = squadMembers
                 self.tableViewTopAnchor.constant = squadMembers.isEmpty ? 0 : 170
