@@ -30,7 +30,6 @@ final class SquadHeaderCollectionViewCell: UICollectionViewCell {
     
     lazy private var nameLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = squadMember.name ?? ""
         lbl.numberOfLines = 2
         lbl.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
         lbl.textColor = .white
@@ -43,6 +42,7 @@ final class SquadHeaderCollectionViewCell: UICollectionViewCell {
     private func setupUI() {
         [imageView, nameLabel].forEach { addSubview($0) }
         setupImage()
+        nameLabel.text = squadMember.name ?? ""
         
         setupConstraints()
     }
